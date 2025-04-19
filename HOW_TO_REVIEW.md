@@ -31,36 +31,4 @@ We are not reviewing code as if we were to merge this PR into production; we are
 
 Reviewers, please add labels (provided) to the PR once you've reviewed. This helps to focus the trainee on the areas they should work on, and gives an overview for mentors on what the whole cohort needs to work on.
 
-## Solutions
-
-### Where to find solutions?
-
-You can find the solutions for the module on the `solutions` branch.
-
-### Solutions branch
-
-The solutions branch typically contains:
-
-#### Sample solutions
-
-Solutions are example answers not the only correct answers.
-
-#### Common responses guides.
-
-Everyone is invited to contribute commonly encountered problems, mistakes, misunderstandings, and mental-model errors to our common responses documents.
-
-Use these resources to inform your code review, get unstuck, and improve your understanding.
-
-## Guides
-
-Here's a detailed checklist of the sorts of things we should check code for:
-
-https://syllabus.codeyourfuture.io/guides/marking-guide
-
-Here's a detailed style guide to help us all write clear, high quality code:
-
-https://syllabus.codeyourfuture.io/guides/code-style-guide
-
-Here's some help with giving good feedback during code review:
-
-https://teachertraining.codeyourfuture.io/tasks/code-review
+https://sdc.codeyourfuture.io/guides/reviewing/
