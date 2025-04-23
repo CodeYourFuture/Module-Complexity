@@ -73,3 +73,12 @@ npm run test:watch
 - https://www.w3schools.com/python/ref_func_sorted.asp
 - https://www.hellointerview.com/learn/code/two-pointers/overview
 - https://www.youtube.com/watch?v=syTs9_w-pwA
+
+###
+
+> [!TIP]
+> Big-O notation focuses on the _dominant trend_ of how resource usage grows as the input size n gets very large. It simplifies things by ignoring constant factors (multipliers) and lower-order terms.
+>
+> For example, an algorithm that takes `2n` steps and another that takes `n` steps are both considered O(n) (Linear Time). Why? Because as `n` gets huge, both grow directly in proportion to n. The factor of 2 doesn't change the fundamental linear growth pattern.
+>
+> Similarly, if you have two separate loops, each running `n` times (total `2n` steps), the complexity is still `O(n)`. This is different from nested loops, where one loop runs n times inside another loop that also runs n times, leading to `n * n` or `O(n²)` complexity.
