@@ -12,9 +12,9 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
         "sum": 10, // 2 + 3 + 5
         "product": 30 // 2 * 3 * 5
     }
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Time Complexity: O(n) - two loops over all of the input numbers, each of which is O(n).
+    Space Complexity:  O(1) - uses two numbers of additional space, regardless of input size.
+    Optimal time complexity: The current implementation is asymptotically optimal - we fundamentally do need to look at every number in order to sum/product them. We could combine the two loops into two to avoid the overhead of tracking a second iteration, but this wouldn't change the complexity.
     """
     # Edge case: empty list
     if not input_numbers:

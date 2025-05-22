@@ -9,9 +9,9 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity: O(n) - two loops over all of the input numbers, each of which is O(n).
+ * Space Complexity:  O(1) - uses two numbers of additional space, regardless of input size.
+ * Optimal Time Complexity: The current implementation is asymptotically optimal - we fundamentally do need to look at every number in order to sum/product them. We could combine the two loops into two to avoid the overhead of tracking a second iteration, but this wouldn't change the complexity.
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
