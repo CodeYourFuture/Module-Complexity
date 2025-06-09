@@ -16,7 +16,7 @@
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
  */
-export function calculateSumAndProduct(numbers) {
+/*export function calculateSumAndProduct(numbers) {
   let sum = 0;
   for (const num of numbers) {
     sum += num;
@@ -31,4 +31,20 @@ export function calculateSumAndProduct(numbers) {
     sum: sum,
     product: product,
   };
+}*/
+export function calculateSumAndProduct(numbers) {
+  let sum = 0;
+  let product = 1;
+
+  for (const num of numbers) {
+    sum += num;
+    product *= num;
+  }
+
+  return {
+    sum: sum,
+    product: product,
+  };
 }
+
+// this solution iterates once instead of two 
