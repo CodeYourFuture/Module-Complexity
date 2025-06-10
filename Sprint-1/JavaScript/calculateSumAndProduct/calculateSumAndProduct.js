@@ -10,7 +10,7 @@
  * }
  *
  * Time Complexity: O(n)
- * Space Complexity: O(1)
+ * Space Complexity: O(1) we are only using two variables(sum,product) in our solution
  * Optimal Time Complexity: O(n)
  *
  * @param {Array<number>} numbers - Numbers to process
@@ -36,7 +36,7 @@ export function calculateSumAndProduct(numbers) {
   let sum = 0;
   let product = 1;
 
-  for (const num of numbers) {
+  for (const num of numbers) { //O(n)
     sum += num;
     product *= num;
   }
