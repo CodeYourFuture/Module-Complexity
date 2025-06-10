@@ -1,7 +1,7 @@
 /**
  * Remove duplicate values from a sequence, preserving the order of the first occurrence of each value.
  *
- * Time Complexity: O(n^2) because we have two nested loops
+ * Time Complexity: O(n²) because we have two nested loops
  * Space Complexity: O(n) uniqueItems array stores up to n elements if all are unique
  *
  * @param {Array} inputSequence - Sequence to remove duplicates from

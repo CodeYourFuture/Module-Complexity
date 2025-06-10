@@ -1,7 +1,7 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity:O(n^2) there are two for loops 
+ * Time Complexity: O(n²) there are two for loops 
  * Space Complexity: O(1) becuae we are not using any extra space
  *
  * @param {Array<number>} numbers - Array of numbers to search through
