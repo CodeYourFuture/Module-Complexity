@@ -10,7 +10,7 @@
  * }
  *
  * Time Complexity: O(n)
- * Space Complexity: O(1) we are only using two variables(sum,product) in our solution
+ * Space Complexity: O(1) we are only using two variables(sum,product) and the space does not grow with input
  * Optimal Time Complexity: O(n)
  *
  * @param {Array<number>} numbers - Numbers to process
