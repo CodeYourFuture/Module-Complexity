@@ -31,3 +31,4 @@ export const findCommonItems = (firstArray, secondArray) => {
   return [...seen]; //)(k)
 };
 
+// this solution is more optimised as it reduces Time Complexity. The time complexity of the inital function was exponential but now it's linear

@@ -49,4 +49,5 @@ export function removeDuplicates(inputSequence) {
 
   return uniqueItems;
 }
+// the time complexity of original solution was exponential but the it's linear for the second solution
 

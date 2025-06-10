@@ -34,3 +34,4 @@ export function hasPairWithSum(numbers, target) {
 
   return false;
 }
+// the time complexity of original solution was exponential but it's linear for the second solution
