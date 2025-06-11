@@ -49,5 +49,5 @@ export function removeDuplicates(inputSequence) {
 
   return uniqueItems;
 }
-// the time complexity of original solution was exponential but the it's linear for the second solution
+// the time complexity of original solution was quadratic O(n²) but the it's linear for the second solution
 
