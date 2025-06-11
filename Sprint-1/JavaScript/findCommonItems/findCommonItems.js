@@ -31,4 +31,4 @@ export const findCommonItems = (firstArray, secondArray) => {
   return [...seen]; //)(k) this creates an array from seen which contains only the common items
 };
 
-// this solution is more optimised as it reduces Time Complexity. The time complexity of the inital function was quadraticO(n*m) but now it's linearO(n+m+k)
+// this solution is more optimised as it reduces Time Complexity. The time complexity of the inital function was quadratic O(n*m) but now it's linear O(n+m+k)
