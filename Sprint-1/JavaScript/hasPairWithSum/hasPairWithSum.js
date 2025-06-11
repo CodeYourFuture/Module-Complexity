@@ -1,7 +1,7 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity: O(n²) there are two for loops 
+ * Time Complexity: O(n²) there are two nested for loops 
  * Space Complexity: O(1) becuae we are not using any extra space
  *
  * @param {Array<number>} numbers - Array of numbers to search through
@@ -34,4 +34,4 @@ export function hasPairWithSum(numbers, target) {
 
   return false;
 }
-// the time complexity of original solution was exponential but it's linear for the second solution
+// the time complexity of original solution was quadratic O(n²) but it's linear for the second solution O(n)
