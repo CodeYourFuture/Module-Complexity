@@ -10,8 +10,7 @@
  * }
  *
  * Time Complexity: O(n)
- * Space Complexity: O(1) we are only using two variables(sum,product) and the space does not grow with input
- * Optimal Time Complexity: O(n)
+ * Space Complexity: O(1) because we are only using two variables(sum,product) and the space does not grow with input
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
@@ -32,6 +31,8 @@
     product: product,
   };
 }*/
+
+//Optimal Time Complexity: O(n)
 export function calculateSumAndProduct(numbers) {
   let sum = 0;
   let product = 1;
