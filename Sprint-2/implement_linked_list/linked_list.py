@@ -1,16 +1,18 @@
+# A single node in the list
 class ListNode:
     def __init__(self, value):
         self.value = value
         self.previous = None
         self.next = None
-
+# The linked list class
 class LinkedList:
-    def __init__(self):
-        self.head = None
+    def __init__(self):        
+        self.head = None        
         self.tail = None
 
-    def push_head(self, value):
-        new_node = ListNode(value)
+    # Add a value to the front of the list
+    def push_head(self, value):        
+        new_node = ListNode(value)        
         new_node.next = self.head
 
         if self.head:
@@ -22,7 +24,8 @@ class LinkedList:
             self.tail = new_node
 
         return new_node
-
+    
+    # Remove and return value from the end
     def pop_tail(self):
         if self.tail is None:
             return None
@@ -37,7 +40,8 @@ class LinkedList:
             self.tail = None
 
         return value
-
+    
+    # Remove a node from the list
     def remove(self, node):
         if node.previous:
             node.previous.next = node.next
