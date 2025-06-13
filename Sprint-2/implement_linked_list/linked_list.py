@@ -22,3 +22,32 @@ class LinkedList:
             self.tail = new_node
 
         return new_node
+
+    def pop_tail(self):
+        if self.tail is None:
+            return None
+
+        value = self.tail.value
+
+        if self.tail.previous:
+            self.tail = self.tail.previous
+            self.tail.next = None
+        else:            
+            self.head = None
+            self.tail = None
+
+        return value
+
+    def remove(self, node):
+        if node.previous:
+            node.previous.next = node.next
+        else:
+            self.head = node.next
+
+        if node.next:
+            node.next.previous = node.previous
+        else:
+            self.tail = node.previous
+
+        node.previous = None
+        node.next = None
