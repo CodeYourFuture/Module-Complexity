@@ -17,18 +17,37 @@
  * @returns {Object} Object containing running total and product
  */
 export function calculateSumAndProduct(numbers) {
-  let sum = 0;
-  for (const num of numbers) {
-    sum += num;
-  }
+    // We went through the list two times, first to add the numbers, then to multiply them.
+    // But we can do both in one loop. This makes the code a bit simpler and faster.
+    
+    // let sum = 0;
+    // for (const num of numbers) {
+    //     sum += num;
+    // }
 
-  let product = 1;
-  for (const num of numbers) {
-    product *= num;
-  }
+    // let product = 1;
+    // for (const num of numbers) {
+    //     product *= num;
+    // }
 
-  return {
-    sum: sum,
-    product: product,
-  };
+    // return {
+    //     sum: sum,
+    //     product: product,
+    // };
+
+    // My solution
+
+    let sum = 0;
+    let product = 1;
+    for (const num of numbers) {
+        sum += num;
+        product *= num;
+    }
+
+    return {
+        sum: sum,
+        product: product,
+    };
 }
+
+
