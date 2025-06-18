@@ -1,8 +1,8 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity: O(n²) original version used a nested loop to check all pairs
- * Space Complexity: O(1) no extra space used in the original version
+ * Time Complexity: O(n²) original (nested loops), O(n) refactored (using Set)
+ * Space Complexity: O(1) original, O(n) refactored (Set)
  * Optimal Time Complexity: O(n) — in the refactored version using a Set for lookups
  *
  * @param {Array<number>} numbers - Array of numbers to search through
