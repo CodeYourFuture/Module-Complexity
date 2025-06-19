@@ -1,5 +1,7 @@
 from typing import List
 
+# Dictionary to store already-computed results
+cache = {}
 
 def ways_to_make_change(total: int) -> int:
     """
@@ -13,8 +15,15 @@ def ways_to_make_change(total: int) -> int:
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
+    Uses caching to speed up repeated calculations.
     """
-    if total == 0 or len(coins) == 0:
+    key = (total, tuple(coins))
+    if key in cache:
+        return cache[key]
+
+    if total == 0:
+        return 1
+    if len(coins) == 0 or total < 0:
         return 0
 
     ways = 0
@@ -26,7 +35,12 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
             if total_from_coins == total:
                 ways += 1
             else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
+                intermediate = ways_to_make_change_helper(
+                    total - total_from_coins,
+                    coins=coins[coin_index + 1:]
+                )
                 ways += intermediate
             count_of_coin += 1
+            
+    cache[key] = ways  
     return ways
