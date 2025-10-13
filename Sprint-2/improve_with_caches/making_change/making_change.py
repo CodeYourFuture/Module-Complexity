@@ -26,7 +26,9 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
             if total_from_coins == total:
                 ways += 1
             else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
+                intermediate = ways_to_make_change_helper(
+                    total - total_from_coins, coins=coins[coin_index + 1 :]
+                )
                 ways += intermediate
             count_of_coin += 1
     return ways
