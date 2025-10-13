@@ -10,6 +10,9 @@ def ways_to_make_change(total: int) -> int:
     return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
 
 
+cache = {}
+
+
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
@@ -26,9 +29,14 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
             if total_from_coins == total:
                 ways += 1
             else:
-                intermediate = ways_to_make_change_helper(
-                    total - total_from_coins, coins=coins[coin_index + 1 :]
-                )
+                key = (total - total_from_coins, tuple(coins[coin_index + 1 :]))
+                if key not in cache:
+                    cache[key] = ways_to_make_change_helper(
+                        total - total_from_coins, coins=coins[coin_index + 1 :]
+                    )
+                    intermediate = cache[key]
+                else:
+                    intermediate = cache[key]
                 ways += intermediate
             count_of_coin += 1
     return ways
