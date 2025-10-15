@@ -7,20 +7,16 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-
-    def push_head(self, value):
-        """Add a value to the head. Return the node as a handle."""
+    def push_head(self, value): #this is to add a value/node to the head/start.
         node = Node(value)
         node.next = self.head
-
         if self.head:
             self.head.previous = node
         self.head = node
         if not self.tail:
-            self.tail = node      #list=empty,tail also points to new node
+            self.tail = node #list=empty,tail also points to new node
         return node
-
-    def pop_tail(self):
+    def pop_tail(self): #Remove the value from the tail of the list
         if not self.tail:
             return None 
         value = self.tail.value
@@ -28,14 +24,10 @@ class LinkedList:
         if prev_node:
             prev_node.next = None
         self.tail = prev_node
-
-        
         if not self.tail:
-            self.head = None #If we removed the only element
-
+            self.head = None #If only one element is removed.
         return value
-
-    def remove(self, node):
+    def remove(self, node): #remove any node 
         if not node:
             return
         prev_node = node.previous
@@ -48,5 +40,5 @@ class LinkedList:
             next_node.previous = prev_node
         else:
             self.tail = prev_node
-        node.next = None     # Disconnect node
+        node.next = None     #Disconnecting the node from the rest
         node.previous = None
