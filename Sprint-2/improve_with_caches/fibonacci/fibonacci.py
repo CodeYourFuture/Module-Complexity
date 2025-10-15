@@ -15,3 +15,7 @@ def fibonacci(n, cache=None):   #cache dict is created only once to store result
         cache[n] = fibonacci(n - 1, cache) + fibonacci(n - 2, cache) #Cache the computed value for future reuse
 
     return cache[n].    #Return the cached or newly computed value.
+#Time complexity of the function was O(2**n) and now using cache it becomes,
+# O(n) since each fibonacci number from 0 - n is computed once
+# Space Complexity O(n) 
+# i.e. Cache stores up to n results since recursion depth is n
