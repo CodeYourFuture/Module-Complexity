@@ -35,3 +35,35 @@ class DoublyLinkedList:
         node = self.tail.previous
         self._remove_node(node)
         return node
+    
+
+#Lru class for the logic
+class LruCache:
+    def __init__(self, limit):
+        if limit <= 0:
+            raise ValueError("Cache limit must be greater than zero")
+        self.limit = limit
+        self.cache = {}  #key->Node
+        self.dll = DoublyLinkedList()
+    def get(self, key):
+        node = self.cache.get(key)
+        if not node:
+            return None
+        # Move the node to the head (most recently used)
+        self.dll._move_to_head(node)
+        return node.value
+    def set(self, key, value):
+        node = self.cache.get(key)
+        if node:
+            # Update existing node and move it to head
+            node.value = value
+            self.dll._move_to_head(node)
+        else:
+            # Create a new node
+            new_node = Node(key, value)
+            self.cache[key] = new_node
+            self.dll._add_to_head(new_node)
+            if len(self.cache) > self.limit:
+                # Remove least recently used node
+                tail = self.dll._pop_tail()
+                del self.cache[tail.key]
