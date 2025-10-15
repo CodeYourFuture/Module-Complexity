@@ -67,3 +67,5 @@ class LruCache:
                 # Remove least recently used node
                 tail = self.dll.pop_tail()
                 del self.cache[tail.key]
+#Time Complexity = O(1) since each operations have the same O(1) complexity
+#Total Space complexity is O(n) i.e. One node and one dictionary entry per cached item
