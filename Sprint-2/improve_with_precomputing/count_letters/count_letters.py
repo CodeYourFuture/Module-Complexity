@@ -1,14 +1,15 @@
+from collections import Counter
 def count_letters(s: str) -> int:
-    """
-    count_letters returns the number of letters which only occur in upper case in the passed string.
-    """
-    only_upper = set()
-    for letter in s:
-        if is_upper_case(letter):
-            if letter.lower() not in s:
-                only_upper.add(letter)
-    return len(only_upper)
-
-
-def is_upper_case(letter: str) -> bool:
-    return letter == letter.upper()
+    #Returns the number of letters which only occur in uppercase in the passed string
+    letters = Counter(s)  #count occurrences of each character
+    only_upper = 0
+    for letter in letters:
+        if letter.isupper():
+            if letter.lower() not in letters:
+                only_upper += 1
+    return only_upper
+#The first implementation was O(n² * m) in the worst case comparing every pair of strings character by character.
+# Now,
+#Counter scans the string once O(n)
+#Checking letter.lower() in letters O(1) per letter
+#Total time O(n + u) where u is the number of unique letters
