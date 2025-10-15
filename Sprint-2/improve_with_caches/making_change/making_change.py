@@ -1,32 +1,29 @@
 from typing import List
-
-
 def ways_to_make_change(total: int) -> int:
-    """
-    Given access to coins with the values 1, 2, 5, 10, 20, 50, 100, 200, returns a count of all of the ways to make the passed total value.
+    coins = [200, 100, 50, 20, 10, 5, 2, 1]
+    cache = {}  # To store already calculated results
 
-    For instance, there are two ways to make a value of 3: with 3x 1 coins, or with 1x 1 coin and 1x 2 coin.
-    """
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
+    def count_ways(remaining, index):
+        # Base cases
+        if remaining == 0:
+            return 1  # Found a valid combination
+        if remaining < 0 or index == len(coins):
+            return 0  # Not possible
+        # Check cache
+        key = (remaining, index)
+        if key in cache:
+            return cache[key]
+        # Option 1: use current coin (stay on same index)
+        use_it = count_ways(remaining - coins[index], index)
+        # Option 2: skip current coin (move to next index)
+        skip_it = count_ways(remaining, index + 1)
+        # Store result in cache
+        cache[key] = use_it + skip_it
+        return cache[key]
+    return count_ways(total, 0)
 
 
-def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
-    """
-    Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
-    """
-    if total == 0 or len(coins) == 0:
-        return 0
 
-    ways = 0
-    for coin_index in range(len(coins)):
-        coin = coins[coin_index]
-        count_of_coin = 1
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
-            if total_from_coins == total:
-                ways += 1
-            else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
-                ways += intermediate
-            count_of_coin += 1
-    return ways
+#Time Complexity O(total × number of coins)
+# Space Complexity O(total × number of coins)
+#less expensive in relation to the original function
