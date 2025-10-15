@@ -42,3 +42,6 @@ class LinkedList:
             self.tail = prev_node
         node.next = None     #Disconnecting the node from the rest
         node.previous = None
+# My analysis
+# the algorithm used on this linked list is efficient each methods have only O(1) space and time complexity since they operate on a single node at a time
+# and at the start of the program we just created a class at a time with similar time and space complexity of O(n)
