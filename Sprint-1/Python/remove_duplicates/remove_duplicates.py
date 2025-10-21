@@ -23,7 +23,7 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     #         unique_items.append(value)
 
     # return unique_items
-    # nested array O(n^2) complexity
+    # nested array - O(n^2) complexity
 
-    # here we iterate through the array to make a dict which is O(n) and than convert it to the list which is also 0(n)
+    # here we iterate through the array to make a dict which is O(n) and than convert it to the list which is also O(n)
     return list(dict.fromkeys(values))

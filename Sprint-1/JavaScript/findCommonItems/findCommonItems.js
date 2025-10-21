@@ -1,7 +1,7 @@
 /**
  * Finds common items between two arrays.
  *
- * Time Complexity: O(n*m) where n and m are length of each array
+ * Time Complexity: O(n*m) or O(n^2) where n and m are length of each array
  * Space Complexity: O(n) where n is a length of arrays
  * Optimal Time Complexity: O(n)
  *
@@ -14,6 +14,7 @@ export const findCommonItems = (firstArray, secondArray) => {
   // program flow:
   // firstArray.filter go through the each item in first array (loop)
   // secondArray.includes check if that item is in the second array (nested loop)
+  // then, from new filtered array we create a Set which is not a nested array, but still O(n) operation
   // nested loop result in O(n^2) time complexity
 
   // to reduce time complexity to sublinear on the number of elements in the arrays we can use Set and it's .intersection() method
