@@ -7,11 +7,11 @@ class Node:
 
 class SkipList:
     MAX_LEVEL = 16
-    P = 0.5
+    P = 0.5  # probability for random level
 
     def __init__(self):
         self.header = Node(None, self.MAX_LEVEL)
-        self.level = 0 
+        self.level = 0  # current max level in list
 
     def random_level(self):
         lvl = 0
@@ -59,3 +59,10 @@ class SkipList:
             result.append(current.value)
             current = current.forward[0]
         return result
+
+    # Make SkipList iterable
+    def __iter__(self):
+        current = self.header.forward[0]
+        while current:
+            yield current.value
+            current = current.forward[0]
