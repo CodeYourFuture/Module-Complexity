@@ -54,6 +54,46 @@ class LruCacheTest(unittest.TestCase):
         self.assertEqual(cache.get("a"), 1)
         self.assertEqual(cache.get("c"), 3)
 
+    def test_get_refreshes_item(self):
+        """Test that getting an item makes it recently used"""
+        cache = LruCache(limit=2)
+
+        cache.set("a", 1)
+        cache.set("b", 2)
+        
+        # Access "a" to make it recently used
+        cache.get("a")
+        
+        # Add new item - should evict "b" not "a"
+        cache.set("c", 3)
+        
+        self.assertIsNone(cache.get("b"))  # "b" was evicted
+        self.assertEqual(cache.get("a"), 1)  # "a" remains
+        self.assertEqual(cache.get("c"), 3)
+
+    def test_complex_usage_pattern(self):
+        """Test LRU behavior with multiple operations"""
+        cache = LruCache(limit=3)
+        
+        # Add initial items
+        cache.set("a", 1)
+        cache.set("b", 2)
+        cache.set("c", 3)
+        
+        # Use items in various order
+        cache.get("a")
+        cache.get("c") 
+        cache.get("b")
+        cache.get("a")
+        
+        # Add new item - should evict least recently used ("c")
+        cache.set("d", 4)
+        
+        self.assertIsNone(cache.get("c"))  # "c" was evicted
+        self.assertEqual(cache.get("a"), 1)
+        self.assertEqual(cache.get("b"), 2)
+        self.assertEqual(cache.get("d"), 4)
+
 
 if __name__ == "__main__":
     unittest.main()
