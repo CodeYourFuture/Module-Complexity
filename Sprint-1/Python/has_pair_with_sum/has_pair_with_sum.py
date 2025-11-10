@@ -42,4 +42,6 @@ Space Complexity:
 O(N)(Linear Space). We introduce the seen_numbers set, which, in the worst case, 
 will store up to N elements from the input list.
 
+Resources: https://www.w3schools.com/python/ref_set_intersection.asp
+
 '''
