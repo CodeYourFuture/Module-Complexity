@@ -11,8 +11,9 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     Space Complexity:
     Optimal time complexity:
     """
-    for i in range(len(numbers)):
-        for j in range(i + 1, len(numbers)):
-            if numbers[i] + numbers[j] == target_sum:
-                return True
+    for i in range(len(numbers) - 1):
+
+        if numbers[i] + numbers[i + 1] == target_sum:
+            return True
+            
     return False
