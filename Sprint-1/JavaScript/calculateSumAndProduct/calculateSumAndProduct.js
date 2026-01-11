@@ -25,10 +25,6 @@ export function calculateSumAndProduct(numbers) {
     product *= num;
   }
 
-  // for (const num of numbers) {
-  //   product *= num;
-  // }
-
   return {
     sum: sum,
     product: product,
