@@ -9,13 +9,14 @@ def find_common_items(
     """
     Find common items between two arrays.
 
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Time Complexity: O(n)
+    The old code used nested loops (loop inside a loop), which is slow O(n^2).
+    I converted the lists to Sets. Finding the intersection of two sets is linear time O(n).
+
+    Space Complexity: O(n) - We create a new set to store the items for comparison.
+    Optimal time complexity: O(n) - We must read the input lists at least once to compare them.
     """
-    common_items: List[ItemType] = []
-    for i in first_sequence:
-        for j in second_sequence:
-            if i == j and i not in common_items:
-                common_items.append(i)
-    return common_items
+
+    # Refactor: I used Python Sets.
+    # set(first_sequence) & set(second_sequence) finds common items instantly.
+    return list(set(first_sequence) & set(second_sequence))
