@@ -6,8 +6,9 @@ def ways_to_make_change(total: int) -> int:
 
     For instance, there are two ways to make a value of 3: with 3x 1 coins, or with 1x 1 coin and 1x 2 coin.
     """
+    coins = [200, 100, 50, 20, 10, 5, 2, 1]
     memo: Dict[Tuple[int, int], int] = {}
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1], memo)
+    return ways_to_make_change_helper(total, coins, memo)
 
 
 def ways_to_make_change_helper(total: int, coins: List[int], memo: Dict[Tuple[int, int], int]) -> int:
@@ -25,18 +26,15 @@ def ways_to_make_change_helper(total: int, coins: List[int], memo: Dict[Tuple[in
         return memo[key]
 
     ways = 0
-    coin_index = 0
     for coin_index in range(len(coins)):
         coin = coins[coin_index]
         count_of_coin = 1
         while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
-            remainder = total - total_from_coins
+            remainder = total - coin * count_of_coin
             if remainder == 0:
                 ways += 1
             else:
-                intermediate = ways_to_make_change_helper(remainder, coins[coin_index + 1:], memo)
-                ways += intermediate
+                ways += ways_to_make_change_helper(remainder, coins[coin_index + 1:], memo)
             count_of_coin += 1
 
     memo[key] = ways
