@@ -8,7 +8,7 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     Find if there is a pair of numbers that sum to a target value.
 
     Time Complexity: O(n^2)
-    Space Complexity: O(n). It's memory for the input array arr
+    Space Complexity: O(n). It's memory for the hash table
     Optimal time complexity: O(n)
     """
     # nested loop result in O(n^2) complexity
@@ -17,20 +17,19 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     #         if numbers[i] + numbers[j] == target_sum:
     #             return True
     # return False
-
-    # it's better to use to pointers method here
-    # first: sort the list O(n)
-    numbers = sorted(numbers)
-    # declare the left and right pointers
-    left, right = 0, len(numbers)-1
-    # and until we "squeezed" the list check if sum of the pointers is equal to target sum
-    # in worst case we need to do n-1 steps where n is length of the list, so overall complexity will be O(n)
-    while left < right:
-        currentSum = numbers[left]+numbers[right]
-        if currentSum == target_sum:
+# -------
+    # it's better to use hash table here, where every item can be searched in O(1) time
+    # create a set
+    seen_numbers = set()
+    # loop through each element O(n)
+    for num in numbers:
+        # calculate the number we need to add to number in a list to get a target sum
+        complement = target_sum - num
+        # search hash table for number we need O(1)
+        # if have seen that number before, then pair found
+        if complement in seen_numbers:
             return True
-        if currentSum > target_sum:
-            right -= 1
-        else:
-            left+=1
+        # add the current number to set
+        seen_numbers.add(num)
+# if the loop completes without finding a pair, return that no pair exists.
     return False
