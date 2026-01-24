@@ -8,7 +8,7 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     Find if there is a pair of numbers that sum to a target value.
 
     Time Complexity: O(n^2)
-    Space Complexity: O(n). It's memory for the hash table
+    Space Complexity: O(n). It's memory for the hash set
     Optimal time complexity: O(n)
     """
     # nested loop result in O(n^2) complexity
@@ -18,14 +18,14 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     #             return True
     # return False
 # -------
-    # it's better to use hash table here, where every item can be searched in O(1) time
+    # it's better to use hash set here, where every item can be searched in O(1) time
     # create a set
     seen_numbers = set()
     # loop through each element O(n)
     for num in numbers:
         # calculate the number we need to add to number in a list to get a target sum
         complement = target_sum - num
-        # search hash table for number we need O(1)
+        # search hash set for number we need O(1)
         # if have seen that number before, then pair found
         if complement in seen_numbers:
             return True
