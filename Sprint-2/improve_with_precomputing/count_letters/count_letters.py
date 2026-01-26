@@ -4,9 +4,8 @@ def count_letters(s: str) -> int:
     """
     only_upper = 0
     only_uniq = set(s)
-    only_uniq_sorted = sorted(only_uniq)
-    uppercase = [ch for ch in only_uniq_sorted if ch.isupper()]
-    lowercase = [ch for ch in only_uniq_sorted if ch.islower()]
+    uppercase = set(ch for ch in only_uniq if ch.isupper())
+    lowercase = set(ch for ch in only_uniq if ch.islower())
     for i in uppercase:
         if i.lower() not in lowercase:
             only_upper += 1
