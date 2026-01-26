@@ -6,6 +6,4 @@ def fibonacci(n):
         return n
     if n not in cache:
         cache[n] = fibonacci(n - 1) + fibonacci(n - 2)
-        return cache[n]
-    else:
-        return cache[n]
+    return cache[n]
