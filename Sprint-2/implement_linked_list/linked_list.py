@@ -31,6 +31,8 @@ class LinkedList:
         else:
             self.head = None
             self.tail = None
+            node.previous = None
+            node.next = None
         return node.value
 
     def remove(self, node):
@@ -38,6 +40,8 @@ class LinkedList:
             if self.tail == node:
                 # head == node, tail == node
                 self.head = self.tail = None
+                node.previous = None
+                node.next = None
             else:
                 # head == node, tail != node
                 self.head = node.next
