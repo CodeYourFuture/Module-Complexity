@@ -14,10 +14,13 @@ class LinkedList:
         return node
 
     def pop_tail(self):
+        # get current tail
         node = self.tail
         if self.tail is not self.head:
+            # replace the tail
             self.tail = node.previous
-            node.previous.next = node.previous = None
+            # reset to none
+            self.tail.next = node.previous = None
         else:
             self.head = None
             self.tail = None
@@ -36,7 +39,7 @@ class LinkedList:
             if self.tail == node:
                 # head != node, tail == node
                 self.tail = node.previous
-                node.previous.next = node.previous = node.next = None
+                self.tail.next = node.previous = None
             else:
                 # head != node, tail != node
                 node.previous.next = node.next
