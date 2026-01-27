@@ -1,3 +1,10 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.previous = None
+        self.next = None
+
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -34,7 +41,7 @@ class LinkedList:
             else:
                 # head == node, tail != node
                 self.head = node.next
-                node.next.previous = node.previous = node.next = None
+                self.head.previous = node.next = None
         else:
             if self.tail == node:
                 # head != node, tail == node
@@ -45,10 +52,3 @@ class LinkedList:
                 node.previous.next = node.next
                 node.next.previous = node.previous
                 node.previous = node.next = None
-
-
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.previous = None
-        self.next = None
