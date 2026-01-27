@@ -20,10 +20,12 @@ def find_common_items(
     second_set = set(second_sequence)
     
     # Find common items using set lookup: O(n) time
+    seen_items = set()
     common_items = []
     for item in first_sequence:
-        if item in second_set and item not in common_items:
+        if item in second_set and item not in seen_items:
             common_items.append(item)
+            seen_items.add(item)
     
     return common_items
 
