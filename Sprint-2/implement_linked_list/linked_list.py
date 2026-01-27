@@ -8,7 +8,7 @@ class LinkedList:
         if self.head:
             node.next = self.head
             self.head.previous = self.head = node
-        elif not self.head and not self.tail:
+        else:
             self.head = node
             self.tail = node
         return node
@@ -26,15 +26,19 @@ class LinkedList:
     def remove(self, node):
         if self.head == node:
             if self.tail == node:
+                # head == node, tail == node
                 self.head = self.tail = None
             else:
+                # head == node, tail != node
                 self.head = node.next
                 node.next.previous = node.previous = node.next = None
         else:
             if self.tail == node:
+                # head != node, tail == node
                 self.tail = node.previous
                 node.previous.next = node.previous = node.next = None
             else:
+                # head != node, tail != node
                 node.previous.next = node.next
                 node.next.previous = node.previous
                 node.previous = node.next = None
