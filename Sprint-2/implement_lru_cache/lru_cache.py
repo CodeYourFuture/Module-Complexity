@@ -9,11 +9,12 @@ class LruCache:
         self.storage = OrderedDict()
 
     def set(self, key, value):
-        if len(self.storage) < self.limit:
-            self.storage[key] = value
-        else:
-            self.storage.popitem(last=False)
-            self.storage[key] = value
+        if len(self.storage) == self.limit:
+            if key in self.storage:
+                self.storage.move_to_end(key)
+            else:
+                self.storage.popitem(last=False)
+        self.storage[key] = value
 
     def get(self, key):
         if key in self.storage:
