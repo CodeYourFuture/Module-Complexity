@@ -2,6 +2,7 @@ import unittest
 
 from making_change import ways_to_make_change
 
+
 class MakingChangeTest(unittest.TestCase):
     def test_1(self):
         # 1x 1p
@@ -26,6 +27,7 @@ class MakingChangeTest(unittest.TestCase):
 
     def test_9176(self):
         self.assertEqual(ways_to_make_change(9176), 628431158425225)
+
 
 if __name__ == "__main__":
     unittest.main()
