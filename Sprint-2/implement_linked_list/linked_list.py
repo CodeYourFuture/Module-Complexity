@@ -16,17 +16,22 @@ class LinkedList:
         if not self.tail:
             self.tail = node #list=empty,tail also points to new node
         return node
-    def pop_tail(self): #Remove the value from the tail of the list
+    def pop_tail(self):
         if not self.tail:
-            return None 
-        value = self.tail.value
-        prev_node = self.tail.previous
+            return None
+        removed_node = self.tail
+        value = removed_node.value
+        prev_node = removed_node.previous
         if prev_node:
             prev_node.next = None
+
         self.tail = prev_node
         if not self.tail:
-            self.head = None #If only one element is removed.
+            self.head = None
+        removed_node.previous = None
+        removed_node.next = None
         return value
+
     def remove(self, node): #remove any node 
         if not node:
             return
