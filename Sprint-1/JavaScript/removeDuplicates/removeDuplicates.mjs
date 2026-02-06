@@ -10,25 +10,16 @@
  */
 export function removeDuplicates(inputSequence) {
   const uniqueItems = [];
+  const seen = new Set();
 
   for (
     let currentIndex = 0;
     currentIndex < inputSequence.length;
     currentIndex++
   ) {
-    let isDuplicate = false;
-    for (
-      let compareIndex = 0;
-      compareIndex < uniqueItems.length;
-      compareIndex++
-    ) {
-      if (inputSequence[currentIndex] === uniqueItems[compareIndex]) {
-        isDuplicate = true;
-        break;
-      }
-    }
-    if (!isDuplicate) {
-      uniqueItems.push(inputSequence[currentIndex]);
+    if (!seen.has(inputSequence[currentIndex])) {
+      seen.add(inputSequence[currentIndex]);
+      uniqueItems.push(inputSequence[currentIndex])
     }
   }
 
