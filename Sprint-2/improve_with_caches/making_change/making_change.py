@@ -1,6 +1,8 @@
 from typing import List
 
 
+cache = {}
+
 def ways_to_make_change(total: int) -> int:
     """
     Given access to coins with the values 1, 2, 5, 10, 20, 50, 100, 200, returns a count of all of the ways to make the passed total value.
@@ -14,6 +16,11 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     """
+    # Create a cache key from total and coins tuple
+    cache_key = (total, tuple(coins))
+    if cache_key in cache:
+        return cache[cache_key]
+    
     if total == 0 or len(coins) == 0:
         return 0
 
@@ -29,4 +36,6 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
                 intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
                 ways += intermediate
             count_of_coin += 1
+    
+    cache[cache_key] = ways
     return ways
