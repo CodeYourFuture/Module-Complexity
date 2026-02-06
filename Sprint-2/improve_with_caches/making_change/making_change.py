@@ -1,5 +1,8 @@
 from typing import List
 
+# Cache dictionary to store computed results
+# Key: (total, tuple(coins)) -> Value: number of ways
+change_cache = {}
 
 def ways_to_make_change(total: int) -> int:
     """
@@ -7,15 +10,28 @@ def ways_to_make_change(total: int) -> int:
 
     For instance, there are two ways to make a value of 3: with 3x 1 coins, or with 1x 1 coin and 1x 2 coin.
     """
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
+    # Clear cache for each new call to avoid interference between tests
+    change_cache.clear()
+    coins = [200, 100, 50, 20, 10, 5, 2, 1]
+    return ways_to_make_change_helper(total, coins)
 
 
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     """
-    if total == 0 or len(coins) == 0:
-        return 0
+    # Create a cache key - use tuple of coins since lists are not hashable
+    cache_key = (total, tuple(coins))
+    
+    # Check if we already computed this combination
+    if cache_key in change_cache:
+        return change_cache[cache_key]
+
+    # Base cases
+    if total == 0:
+        return 1  # One way to make 0: use no coins
+    if len(coins) == 0:
+        return 0  # No coins left but still need to make total > 0
 
     ways = 0
     for coin_index in range(len(coins)):
@@ -29,4 +45,7 @@ def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
                 intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
                 ways += intermediate
             count_of_coin += 1
+    
+    # Store result in cache before returning
+    change_cache[cache_key] = ways
     return ways
