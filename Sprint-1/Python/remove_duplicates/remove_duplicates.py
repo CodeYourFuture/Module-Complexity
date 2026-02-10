@@ -23,3 +23,33 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
             unique_items.append(value)
 
     return unique_items
+
+
+"""
+Time Complexity:
+
+1 + 2 + 3 + ... + (n - 1) = n(n - 1)/2 = O(n²)
+
+Space Complexity:
+
+Even though we're just using .append(), the list grows linearly, so it is s O(n) space.
+
+"""
+
+#Optimal Solution
+
+def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
+    seen = set()
+    unique_items = []
+    
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            unique_items.append(value)
+    
+    return unique_items
+
+'''
+Time Complexity: O(n)
+Space Complexity: O(n) storing unique_items and seen
+'''
