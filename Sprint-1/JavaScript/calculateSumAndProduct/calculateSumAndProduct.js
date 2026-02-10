@@ -9,9 +9,9 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity: O(n) because this code has 2 loops that are separated from each other
+ * Space Complexity: O(n) for input array and O(1) for variables and loops, which result in O(n) in total
+ * Optimal Time Complexity: O(n) I think this algorithm is efficient enough
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
