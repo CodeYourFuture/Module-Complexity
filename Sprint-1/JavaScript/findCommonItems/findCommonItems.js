@@ -15,6 +15,9 @@
 
 
 export const findCommonItems = (firstArray, secondArray) => {
+
+  // In this case, the time complexity is O(n * m), it will only become O(n^2) when the two arrays have equal lengths. This case easily be avoided by using a set to store the second sequence. When checking for a match in the set using item in second-set, this has a time complexity of O(1).
+
   const set = new Set(secondArray);
 
   return [... new Set(firstArray.filter(item => set.has(item)))]

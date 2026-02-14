@@ -17,6 +17,13 @@
  * @returns {Object} Object containing running total and product
  */
 export function calculateSumAndProduct(numbers) {
+
+
+  // In this case, there is no changes in the functionality that can change the time complexity as the complexity is already O(n) and only extra space is used.
+
+  // In this case, I can just make the code easier to read and cleaner.
+
+  
   let sum = 0;
   let product = 1;
 

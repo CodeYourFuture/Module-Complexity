@@ -1,24 +1,16 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ * Optimal Time Complexity: O(1)
  *
  * @param {Array<number>} numbers - Array of numbers to search through
  * @param {number} target - Target sum to find
  * @returns {boolean} True if pair exists, false otherwise
  */
-// export function hasPairWithSum(numbers, target) {
-//   for (let i = 0; i < numbers.length; i++) {
-//     for (let j = i + 1; j < numbers.length; j++) {
-//       if (numbers[i] + numbers[j] === target) {
-//         return true;
-//       }
-//     }
-//   }
-//   return false;
-// }
+
+//  The time complexity in the new implementation is O(n) because we only loop and iterated through the array once. The use of set to add and check value for occurrence is O(1) which is the best Optimal time complexity
 
 export function hasPairWithSum(numbers, target) {
   for (let i = 0; i < numbers.length; i++) {
