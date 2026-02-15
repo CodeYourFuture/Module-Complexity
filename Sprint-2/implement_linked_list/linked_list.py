@@ -29,7 +29,18 @@ class LinkedList:
         return new_node
     
     def pop_tail(self) -> any:
-        pass
+        if self.head is None:
+            return None
+        elif self.head==self.tail:
+            node_value=self.head.value
+            self.head=None
+            self.tail=None
+        else:
+            node_value=self.tail.value
+            previous_node=self.tail.previous   
+            self.tail=previous_node 
+        return node_value    
+    
     def remove(self,node) -> None:
         pass
 
