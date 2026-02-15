@@ -15,20 +15,22 @@ ItemType = TypeVar("ItemType")
 
     Space Complexity: We store matching items in a new list `common_items`. If there are k matches, the list uses O(k) 
     space. In the worst case (all items match), this becomes O(n).
-    
+
     Optimal time complexity: O(n+m)-> (Look at each element of the first sequence and the second sequence at least once)
 """
+
+
+#sets can tell common items directly
 def find_common_items(
     first_sequence: Sequence[ItemType], second_sequence: Sequence[ItemType]
 ) -> List[ItemType]:
+    first_set = set(first_sequence) #O(n)
+    second_set = set(second_sequence) #O(m)
+
+    common_items_set = first_set & second_set # O(min(n,m))  work done is proportional to the size of the smaller set.
+
+    return list(common_items_set)
 
 
-
-    common_items = set()   #set has o(1) time complexity
-    for i in first_sequence:
-        for j in second_sequence:
-            if i == j:  #has o(1)
-                common_items.add(i) #adding in set has o(1)
-    return list(common_items)
-#After refactoring we reduce the time complexity to O(n*m) from O(n*m*k)
-#Space remain O(k) for the set (worst case O(n)
+# Time complexity: reduced with this refactor to optimal O(n+m)
+#Space Complexity: O(n + m)- because we create two sets of these sizes.
