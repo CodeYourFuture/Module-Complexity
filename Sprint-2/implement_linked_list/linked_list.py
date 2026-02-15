@@ -17,8 +17,19 @@ class LinkedList:
         self.head=None
         self.tail=None        
     def push_head(self,value) -> Node:
-        pass
+        new_node=Node(value)
+        if self.head is None:
+            self.head=new_node
+            self.tail=new_node
+        else:
+           old_head=self.head
+           self.head=new_node
+           new_node.next=old_head
+           old_head.previous=new_node
+        return new_node
+    
     def pop_tail(self) -> any:
         pass
     def remove(self,node) -> None:
         pass
+
