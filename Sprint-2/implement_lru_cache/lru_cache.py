@@ -116,9 +116,10 @@ class LruCache:
         if key not in self.map:
             return None
         node=self.map[key]   
-        self.List.remove(node)
         self.List.push_head(node=node)
-        return node.value   
+        return node.value  
+
+
     def set(self,key,value):
         """
         Add a new key-value pair or update an existing key.
@@ -133,7 +134,6 @@ class LruCache:
         if key in self.map:
             node=self.map[key] 
             node.value=value  
-            self.List.remove(node)
             self.List.push_head(node=node)
         else:
             if self.count>=self.limit:
