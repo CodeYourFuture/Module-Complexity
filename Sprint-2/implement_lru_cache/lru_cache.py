@@ -100,6 +100,8 @@ class LruCache:
         Initialize the LRU Cache.
         Args: limit (int): Maximum number of items the cache can hold.
         """
+        if limit<=0:
+            raise ValueError("limit must be greater than zero")
         self.limit=limit
         self.map={}
         self.List=LinkedList()
