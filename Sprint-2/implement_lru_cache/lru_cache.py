@@ -72,7 +72,7 @@ class LinkedList:
         node_to_remove=node
         current_head=self.head
         current_tail=self.tail
-        if current_head==current_tail:
+        if current_head==current_tail and node_to_remove==current_head:
             #list has only one node
             self.head=None
             self.tail=None
