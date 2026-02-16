@@ -92,7 +92,30 @@ class LinkedList:
             next_node.previous=previous_node
         
         node_to_remove.next=None
-        node_to_remove.previous=None     
-        
+        node_to_remove.previous=None   
 
-  
+class LruCache:
+    def __init__(self,limit):
+        """
+        Initialize the LRU Cache.
+        Args: limit (int): Maximum number of items the cache can hold.
+        """
+        self.limit=limit
+        self.map={}
+        self.List=LinkedList()
+        self.count=0
+
+    def get(self,key) ->any:
+        """
+        Retrieve value by key and mark node as most recently used.
+        Args: key: Key to look up in cache.
+        Returns: The value associated with the key, or None if not found.
+        """
+        if key not in self.map:
+            return None
+        node=self.map[key]   
+        self.List.remove(node)
+        self.List.push_head(node=node)
+        return node.value   
+
+   
