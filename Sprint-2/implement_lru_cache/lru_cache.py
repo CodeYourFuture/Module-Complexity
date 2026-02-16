@@ -117,5 +117,32 @@ class LruCache:
         self.List.remove(node)
         self.List.push_head(node=node)
         return node.value   
+    def set(self,key,value):
+        """
+        Add a new key-value pair or update an existing key.
+        Args:
+            key: Key to insert or update.
+            value: Value to associate with the key.
+        Behavior:
+            - Updates value if key exists and moves node to head.
+            - Inserts new node at head if key does not exist.
+            - Evicts least recently used node if cache exceeds limit.
+        """
+        if key in self.map:
+            node=self.map[key] 
+            node.value=value  
+            self.List.remove(node)
+            self.List.push_head(node=node)
+        else:
+            if self.count>=self.limit:
+                old_key,old_value=self.List.pop_tail()
+                del self.map[old_key]
+                self.count -=1
+
+            new_node=self.List.push_head(key=key,value=value)
+            self.count +=1
+            self.map[key]=new_node
+
+  
 
    
