@@ -7,18 +7,26 @@ def find_longest_common_prefix(strings: List[str]):
 
     In the event that an empty list, a list containing one string, or a list of strings with no common prefixes is passed, the empty string will be returned.
     """
+    if not strings or len(strings) == 1:
+        return ""
+    
     longest = ""
-    for string_index, string in enumerate(strings):
-        for other_string in strings[string_index+1:]:
-            common = find_common_prefix(string, other_string)
-            if len(common) > len(longest):
-                longest = common
+    
+    # Precompute: Build a dictionary of prefixes to their count
+    # For each string, generate all its prefixes and count occurrences
+    prefix_count = {}
+    
+    for string in strings:
+        seen_prefixes = set()  # Avoid counting same prefix twice from same string
+        for i in range(len(string) + 1):
+            prefix = string[:i]
+            if prefix not in seen_prefixes:
+                prefix_count[prefix] = prefix_count.get(prefix, 0) + 1
+                seen_prefixes.add(prefix)
+    
+    # Find the longest prefix that appears in at least 2 strings
+    for prefix, count in prefix_count.items():
+        if count >= 2 and len(prefix) > len(longest):
+            longest = prefix
+    
     return longest
-
-
-def find_common_prefix(left: str, right: str) -> str:
-    min_length = min(len(left), len(right))
-    for i in range(min_length):
-        if left[i] != right[i]:
-            return left[:i]
-    return left[:min_length]
