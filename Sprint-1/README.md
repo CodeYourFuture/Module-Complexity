@@ -17,14 +17,6 @@ There are some common programming tasks in this folder. The same tasks are provi
 1. Identify whether the complexity can be reduced. If so, refactor the code to reduce its complexity. If you don't think the complexity can be reduced, explain why not in a comment.
 1. Provide the refactored code and briefly set out the complexity of your refactor.
 
-## Next, open at least one PR
-
-1. Open a PR with your changes, explaining what you have done and why. Include any resources you used to complete your work.
-1. Now go and find another PR from a colleague.
-1. **Review** this PR. Do you agree with their analysis? What about their solution or solutions? Is there a more efficient strategy you could share with your colleague to improve the code. If so, how can you show clearly and respectfully that your strategy is more efficient?
-
-You can review as many PRs as you like. You must respond to the reviews you receive. You can use class time to complete this project.
-
 ## Running Tests
 
 ### Python Tests
