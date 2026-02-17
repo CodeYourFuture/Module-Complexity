@@ -1,33 +1,55 @@
 
-#linked list has nodes - each node has a value and a pointer to next node- who comes next. 
+#each node should know what comes before it and what come after it 
 class node:
     def __init__(self,value):
         self.value = value
-        self.next = None  #None means empty we are not yet pointing to another node yet
-        pass
-class linkedlist:
+        self.next = None 
+        self.previous = None #to implement a 0(1) we need a implement a double linked list to access previous.
+
+#for O(1), track both ends
+class LinkedList:
     def __init__(self):
-        self.head = None   #head is the first element of a linked list 
+        self.head = None   
+        self.tail = None
 
-    def append(self,value): 
+    def push_head(self,value): 
         new_node = node(value)
-        if self.head is None:
-            self.head = new_node
-            return
-    #creating a temperory pointer current to move forward safely 
-        current = self.head #makes a copy of first head node with current being our temp pointer
-        while current.next is not None: #head > next >  next > next >
-            current = current.next
+        if self.head is None:  
+            self.head = self.tail = new_node
+            return new_node
+        
+        new_node.next = self.head
+        self.head.previous = new_node
+        self.head = new_node
 
-        current.next = new_node
+        return new_node
+    
+#Remove last node 
+    def pop_tail(self):  
+        if self.tail is None:
+            return None
+        
+        removed = self.tail
+        #checking for 1 elemt
+        if self.head == self.tail: 
+           self.head = self.tail = None 
+           return removed.value
+        
+        #Greater than 1 element, move tailpointer to previos
+        self.tail = self.tail.previous 
+        self.tail.next = None #cutting link to old tail
+        return removed.value
+    
+    def remove(self, node):
+        if node.previous is not None: #fixing previous link
+            node.previous.next = node.next
+        else:
+            # removing the head
+            self.head = node.next
 
-    def print_list(self):
-        current = self.head
-        while current is not None:
-            print(current.value)
-            current = current.next
-ll = linkedlist()
-ll.append(10)
-ll.append(20)
-ll.append(30)
-ll.print_list()
+        if node.next is not None:
+            node.next.previous = node.previous
+        else:
+        # removing the tail
+        
+            self.tail = node.previous
