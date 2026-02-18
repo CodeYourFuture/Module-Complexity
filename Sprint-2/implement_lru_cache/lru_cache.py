@@ -17,7 +17,7 @@ class LruCache:
         self.size = 0
 
     
-    #to remove a node frpm linkedlist
+    #to remove a node from linkedlist
     def _remove_node(self, node: Node): 
         if node.prev:
             node.prev.next = node.next
