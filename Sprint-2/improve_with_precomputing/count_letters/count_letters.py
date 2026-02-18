@@ -12,19 +12,19 @@ def count_letters(s: str) -> int:
     #             only_upper.add(letter)
     # return len(only_upper)
     uppercase_letters : Set[str] = set()
-    lowecase_letters : Set[str] = set()
+    lowercase_letters : Set[str] = set()
 
     # Precompute uppercase and lowercase letters
     for letter in s:
         if is_upper_case(letter):
             uppercase_letters.add(letter)
         elif letter.isalpha():
-            lowecase_letters.add(letter)  
+            lowercase_letters.add(letter)  
 
     # Count uppercase letters that don't appear in lowercase
     count = 0 
     for letter in uppercase_letters:
-        if letter.lower() not in lowecase_letters:    
+        if letter.lower() not in lowercase_letters:    
             count +=1
             
     return count         
