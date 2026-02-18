@@ -8,17 +8,31 @@ def find_longest_common_prefix(strings: List[str]):
     In the event that an empty list, a list containing one string, or a list of strings with no common prefixes is passed, the empty string will be returned.
     """
     longest = ""
+
+    # Precompute prefix hashes for each string to speed up comparisons
+    prefix_map={s:[hash(s[:i+1]) for i in range(len(s))] for s in strings}
+
+    # Compare all pairs of strings using precomputed hashes
     for string_index, string in enumerate(strings):
         for other_string in strings[string_index+1:]:
-            common = find_common_prefix(string, other_string)
+            common = find_common_prefix(string, other_string,prefix_map)
             if len(common) > len(longest):
                 longest = common
     return longest
 
 
-def find_common_prefix(left: str, right: str) -> str:
-    min_length = min(len(left), len(right))
+def find_common_prefix(left: str, right: str,prefix_map:dict) -> str:
+    # Retrieve precomputed prefix hashes
+    left_hashes=prefix_map[left]
+    right_hashes=prefix_map[right]
+    min_length = min(len(left_hashes), len(right_hashes))
+
+    common_len = 0
+    # Compare hashes until a mismatch is found
     for i in range(min_length):
-        if left[i] != right[i]:
-            return left[:i]
-    return left[:min_length]
+        if left_hashes[i] == right_hashes[i]:
+            common_len=i+1
+        else:
+            break    
+    # Return the common prefix string    
+    return left[:common_len]
