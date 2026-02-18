@@ -22,12 +22,18 @@ class LinkedList:
     def pop_tail(self):
         if not self.tail:
             return None
-        value = self.tail.value
+        old_tail = self.tail
+        value = old_tail.value
+
         if self.head == self.tail:
             self.head = self.tail = None
         else:
-            self.tail = self.tail.previous
+            self.tail = old_tail.previous
             self.tail.next = None
+
+        old_tail.previous = None
+        old_tail.next = None  
+
         return value
 
     def remove(self, node):
