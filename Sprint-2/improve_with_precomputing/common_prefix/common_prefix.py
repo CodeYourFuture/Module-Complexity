@@ -15,28 +15,23 @@ def find_longest_common_prefix(strings: List[str]):
     
     longest = ""
 
-    # Precompute prefix hashes for each string to speed up comparisons
-    prefix_map={s:[hash(s[:i+1]) for i in range(len(s))] for s in strings}
-
     # Compare only adjacent strings in the sorted list
     for i in range(len(strings)-1):
-        common=find_common_prefix(strings[i],strings[i+1],prefix_map)
+        common=find_common_prefix(strings[i],strings[i+1])
         if len(common)>len(longest):
             longest=common
 
     return longest
 
 
-def find_common_prefix(left: str, right: str,prefix_map:dict) -> str:
+def find_common_prefix(left: str, right: str) -> str:
     # Retrieve precomputed prefix hashes
-    left_hashes=prefix_map[left]
-    right_hashes=prefix_map[right]
-    min_length = min(len(left_hashes), len(right_hashes))
+    min_length = min(len(left), len(right))
 
     common_len = 0
     # Compare hashes until a mismatch is found
     for i in range(min_length):
-        if left_hashes[i] == right_hashes[i]:
+        if left[i] == right[i]:
             common_len=i+1
         else:
             break    
