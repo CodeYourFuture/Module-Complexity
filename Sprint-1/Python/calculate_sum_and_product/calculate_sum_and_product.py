@@ -12,20 +12,25 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
         "sum": 10, // 2 + 3 + 5
         "product": 30 // 2 * 3 * 5
     }
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+    Optimal time complexity:O(N)
     """
     # Edge case: empty list
     if not input_numbers:
         return {"sum": 0, "product": 1}
 
-    sum = 0
-    for current_number in input_numbers:
-        sum += current_number
+    # sum = 0
+    # for current_number in input_numbers:
+    #     sum += current_number
 
+    # product = 1
+    # for current_number in input_numbers:
+    #     product *= current_number
+
+    sum = 0 
     product = 1
     for current_number in input_numbers:
+        sum += current_number
         product *= current_number
-
     return {"sum": sum, "product": product}
