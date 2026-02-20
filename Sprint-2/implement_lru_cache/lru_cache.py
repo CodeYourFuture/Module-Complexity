@@ -48,12 +48,11 @@ def get(key):
         # // tracker to now timestamp updaed
         item["tracker"] = time.time()
         
-        #to front
+        #move to front
         our_list.remove(item)
         our_list.insert(0, item)
         
         return item["value"]
-    
     return None
 
 
