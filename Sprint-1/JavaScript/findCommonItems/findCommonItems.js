@@ -14,10 +14,11 @@
 // ];
 
 export const findCommonItems = (firstArray, secondArray) => {
-  let firstArr = new Set(firstArray);
-  let secondArr = new Set(secondArray);
+  const firstArr = new Set(firstArray);
+  const secondArr = new Set(secondArray);
 
-  return [...firstArr].filter((arr) => secondArr.has(arr));
+  // return [...firstArr].filter((arr) => secondArr.has(arr));
+  return [...firstArr.intersection(secondArr)];
 };
 
 //  * https://www.w3schools.com/js/js_set_methods.asp#mark_set_new
