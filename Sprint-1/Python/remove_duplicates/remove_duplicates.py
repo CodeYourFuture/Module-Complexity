@@ -11,15 +11,18 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     Space complexity:
     Optimal time complexity:
     """
+
+    """
+    The time complexity in the new implementation is O(n) because we only loop and iterated through the array once. The use of set to add and check value for occurrence is O(1) which is the best Optimal time complexity
+    """
+
     unique_items = []
+    new_set = set()
 
     for value in values:
-        is_duplicate = False
-        for existing in unique_items:
-            if value == existing:
-                is_duplicate = True
-                break
-        if not is_duplicate:
+
+        if value not in new_set:
             unique_items.append(value)
+            new_set.add(value)
 
     return unique_items
