@@ -1,5 +1,5 @@
 from typing import List
-
+cache = {}
 
 def ways_to_make_change(total: int) -> int:
     """
@@ -11,22 +11,38 @@ def ways_to_make_change(total: int) -> int:
 
 
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
+ 
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     """
-    if total == 0 or len(coins) == 0:
+#We found one valid way if its an exact match.
+    if total == 0:
+        return 1
+#base case no coins left but still have remaining total but no way to form it
+    if not coins:
         return 0
+#creating a cache key from our current prob, converting list to a tuple to make it hashable
+    key = (total, tuple(coins)) 
+    if key in cache:
+        return cache[key]
+
 
     ways = 0
+# Try using the current coin 1,2,3...times as long as we don't exceed the total.
     for coin_index in range(len(coins)):
         coin = coins[coin_index]
         count_of_coin = 1
         while coin * count_of_coin <= total:
             total_from_coins = coin * count_of_coin
-            if total_from_coins == total:
+            if total_from_coins == total:   #if we get an exact match ++ on ways
                 ways += 1
+            
+#remaining total and remaining coins after using the current one
             else:
                 intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
                 ways += intermediate
+           
             count_of_coin += 1
+    cache[key] = ways 
     return ways
+    
