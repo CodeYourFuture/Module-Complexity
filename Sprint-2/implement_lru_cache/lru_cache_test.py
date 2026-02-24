@@ -1,5 +1,4 @@
 import unittest
-
 from lru_cache import LruCache
 
 class LruCacheTest(unittest.TestCase):
