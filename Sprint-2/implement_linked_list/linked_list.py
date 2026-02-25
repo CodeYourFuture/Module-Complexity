@@ -27,8 +27,9 @@ class LinkedList():
         if not self.tail:
             return None
         
-        value = self.tail.value # 2
-        new_tail = self.tail.previous # 1
+        old_tail = self.tail
+        value = self.tail.value
+        new_tail = self.tail.previous
 
         if new_tail:
             new_tail.next = None
@@ -36,6 +37,10 @@ class LinkedList():
             self.head = None
         
         self.tail = new_tail
+
+        old_tail.previous = None
+        old_tail.next = None
+
         return value
 
 # [4, 1, 2] - 1
