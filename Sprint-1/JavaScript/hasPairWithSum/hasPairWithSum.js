@@ -21,16 +21,18 @@
 //   return false;
 // }
 
-let checkedNumbers = new set();
-let secondNumber = target - number;
+
 
 export function hasPairWithSum(numbers, target) {
+  let checkedNumbers = new Set();
+  
   for (const number of numbers) {
-    if (checkedNumbers.has(secondNumber)) {
+    if (checkedNumbers.has(target - number)) {
       return true;
     }
     checkedNumbers.add(number);
   }
+  return false;
 
 }
 
