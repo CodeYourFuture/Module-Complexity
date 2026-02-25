@@ -9,9 +9,9 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity: O(n) - Lopp through each element in an array once.
+ * Space Complexity: O(1) - only 2 variables used
+ * Optimal Time Complexity: O(n) - JS engine must read each number at least once
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
