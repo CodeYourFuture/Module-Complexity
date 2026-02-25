@@ -3,7 +3,7 @@
  *
  * Time Complexity: O(n²) - since it's a nested loop over the same array. 
  * Space Complexity: O(1) - since there's no other array, set, object that gorws proportionally to the input size, space usage doesn't grow.
- * Optimal Time Complexity: O(n) - 
+ * Optimal Time Complexity: O(n) - each number is checked at least once after refactoring.
  *
  * @param {Array<number>} numbers - Array of numbers to search through
  * @param {number} target - Target sum to find
@@ -25,7 +25,7 @@
 
 export function hasPairWithSum(numbers, target) {
   let checkedNumbers = new Set();
-  
+
   for (const number of numbers) {
     if (checkedNumbers.has(target - number)) {
       return true;
