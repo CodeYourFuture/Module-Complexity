@@ -22,4 +22,14 @@
 // }
 
 let checkedNumbers = new set();
+let secondNumber = target - number;
+
+export function hasPairWithSum(numbers, target) {
+  for (const number of numbers) {
+    if (checkedNumbers.has(secondNumber)) {
+      return true;
+    }
+  }
+
+}
 
