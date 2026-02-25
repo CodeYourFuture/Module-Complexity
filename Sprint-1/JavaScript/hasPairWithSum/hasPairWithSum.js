@@ -29,6 +29,7 @@ export function hasPairWithSum(numbers, target) {
     if (checkedNumbers.has(secondNumber)) {
       return true;
     }
+    checkedNumbers.add(number);
   }
 
 }
