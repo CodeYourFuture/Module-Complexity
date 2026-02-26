@@ -18,5 +18,11 @@
 
 export const findCommonItems = (firstArray, secondArray) => {
   const arrayToSet = new Set(secondArray);
-  return firstArray.filter((element) => arrayToSet.has(element));
+  for (const element of firstArray) {
+    if (secondArray.includes(element)) {
+          arrayToSet.add(element);
+    }
+
+  }  
+  return arrayToSet;
 };
