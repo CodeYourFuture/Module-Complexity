@@ -30,6 +30,8 @@ class LinkedList:
             self.tail = node
             if self.tail is not None:
                 self.tail.next = None
+            else:
+                self.head = None
         else:
             raise IndexError("Unable to remove from empty linked list")
         
