@@ -14,3 +14,5 @@ class LinkedList:
         if self.head is not None:
             new_head_node.next = self.head
             self.head.prev = new_head_node
+        
+        self.head = new_head_node
