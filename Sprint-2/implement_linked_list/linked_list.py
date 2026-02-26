@@ -8,3 +8,6 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
+    def push_head(self, data):
+        new_head_node = Node(data)
