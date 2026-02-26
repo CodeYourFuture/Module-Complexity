@@ -11,3 +11,5 @@ class LinkedList:
 
     def push_head(self, data):
         new_head_node = Node(data)
+        if self.head is not None:
+            new_head_node.next = self.head
