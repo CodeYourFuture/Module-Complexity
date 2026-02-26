@@ -7,8 +7,8 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     """
     Remove duplicate values from a sequence, preserving the order of the first occurrence of each value.
 
-    Time complexity:
-    Space complexity:
+    Time complexity: O(n2) - nested loop run once per element n times.Same for outer loop
+    Space complexity: O(n) - since there's another array to store unique items. its size grow proportionally as the number of unique inputs grow.
     Optimal time complexity:
     """
     unique_items = []
