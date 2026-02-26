@@ -24,11 +24,13 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
 
     # return unique_items
 
-    unique_items = set()
+    unique_items = []
+    checked_values = set()
 
     for value in values:
-        if value not in unique_items:
-            unique_items.add(value)
+        if value not in checked_values:
+            unique_items.append(value)
+            checked_values.add(value)
     
     return unique_items
 
