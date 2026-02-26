@@ -25,7 +25,13 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     # return unique_items
 
     unique_items = set()
+
+    for value in values:
+        if value not in unique_items:
+            unique_items.add(value)
     
+    return unique_items
+
 
 
    
