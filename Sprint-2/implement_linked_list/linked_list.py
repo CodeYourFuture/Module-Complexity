@@ -16,3 +16,7 @@ class LinkedList:
             self.head.prev = new_head_node
         
         self.head = new_head_node
+        if self.tail is None:
+            self.tail = new_head_node
+
+        return new_head_node
