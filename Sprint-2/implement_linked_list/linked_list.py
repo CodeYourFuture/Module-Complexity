@@ -44,6 +44,12 @@ class LinkedList:
             node.previous.next = node.next
         else:
             self.head = node.next
+
+        if node.next is not None:
+            node.next.previous = node.previous
+        else:
+            self.tail = node.previous
+
   
 
 
