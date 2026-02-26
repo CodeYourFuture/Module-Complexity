@@ -36,6 +36,18 @@ class LinkedList:
             raise IndexError("Unable to remove from empty linked list")
         
         return tail_node.data
+    
+
+
+    def remove(self, node):
+        if node.previous is not None:
+            node.previous.next = node.next
+  
+
+
+
+
+
 
 
 
