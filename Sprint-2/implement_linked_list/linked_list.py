@@ -14,7 +14,7 @@ class LinkedList:
         if self.head is not None:
             new_head_node.next = self.head
             self.head.prev = new_head_node
-        
+
         self.head = new_head_node
         if self.tail is None:
             self.tail = new_head_node
@@ -32,6 +32,8 @@ class LinkedList:
                 self.tail.next = None
         else:
             raise IndexError("Unable to remove from empty linked list")
+        
+        return tail_node.data
 
 
 
