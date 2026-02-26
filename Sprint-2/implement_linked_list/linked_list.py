@@ -25,5 +25,9 @@ class LinkedList:
 
     def pop_tail(self):
         if self.tail is not None:
+            tail_node = self.tail
+            node = self.tail.prev
+            self.tail = node
             self.tail.next = None
+            self.tail.prev != None
           
