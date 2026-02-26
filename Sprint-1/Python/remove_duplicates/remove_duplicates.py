@@ -9,7 +9,7 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
 
     Time complexity: O(n2) - nested loop run once per element n times.Same for outer loop
     Space complexity: O(n) - since there's another array to store unique items. its size grow proportionally as the number of unique inputs grow.
-    Optimal time complexity:
+    Optimal time complexity: O(n) - For an array of n elements, you must look at each element at least a once to check if it's duplicate.
     """
     # unique_items = []
 
