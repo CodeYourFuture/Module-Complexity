@@ -20,3 +20,10 @@ class LinkedList:
             self.tail = new_head_node
 
         return new_head_node
+    
+
+
+    def pop_tail(self):
+        if self.tail is not None:
+            self.tail.next = None
+          
