@@ -18,11 +18,15 @@
 
 export const findCommonItems = (firstArray, secondArray) => {
   const arrayToSet = new Set(secondArray);
+  const uniqueCommonItems = [];
+  const checkedItems = new Set();
+
   for (const element of firstArray) {
-    if (secondArray.includes(element)) {
-          arrayToSet.add(element);
+    if (arrayToSet.has(element) && !checkedItems.has(element)) {
+      checkedItems.add(element);
+      uniqueCommonItems.push(element);
     }
 
   }  
-  return arrayToSet;
+  return uniqueCommonItems;
 };
