@@ -28,6 +28,8 @@ class LinkedList:
             tail_node = self.tail
             node = self.tail.prev
             self.tail = node
+            node.next = None
+
             
           
           
