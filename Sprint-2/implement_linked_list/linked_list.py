@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.prev = None
+        self.previous = None
         self.next = None
 
 class LinkedList:
@@ -13,7 +13,7 @@ class LinkedList:
         new_head_node = Node(data)
         if self.head is not None:
             new_head_node.next = self.head
-            self.head.prev = new_head_node
+            self.head.previous = new_head_node
 
         self.head = new_head_node
         if self.tail is None:
@@ -26,8 +26,8 @@ class LinkedList:
     def pop_tail(self):
         if self.tail is not None:
             tail_node = self.tail
-            node = self.tail.prev
-            self.tail = node
+            previous = self.tail.previous
+            self.tail = previous
             if self.tail is not None:
                 self.tail.next = None
             else:
