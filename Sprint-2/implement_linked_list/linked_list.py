@@ -1,6 +1,6 @@
 
 #each node should know what comes before it and what come after it 
-class node:
+class Node:
     def __init__(self,value):
         self.value = value
         self.next = None 
@@ -13,7 +13,7 @@ class LinkedList:
         self.tail = None
 
     def push_head(self,value): 
-        new_node = node(value)
+        new_node = Node(value)
         if self.head is None:  
             self.head = self.tail = new_node
             return new_node
@@ -25,31 +25,24 @@ class LinkedList:
         return new_node
     
 #Remove last node 
-    def pop_tail(self):  
-        if self.tail is None:
-            return None
-        
-        removed = self.tail
-        #checking for 1 elemt
-        if self.head == self.tail: 
-           self.head = self.tail = None 
-           return removed.value
-        
-        #Greater than 1 element, move tailpointer to previos
-        self.tail = self.tail.previous 
-        self.tail.next = None #cutting link to old tail
+    def pop_tail(self):
+        if self.tail is None: 
+            return None 
+        removed = self.tail 
+        self.remove(removed) 
         return removed.value
     
     def remove(self, node):
         if node.previous is not None: #fixing previous link
             node.previous.next = node.next
         else:
-            # removing the head
-            self.head = node.next
+
+            self.head = node.next # removing the head
 
         if node.next is not None:
             node.next.previous = node.previous
         else:
-        # removing the tail
-        
-            self.tail = node.previous
+            self.tail = node.previous # removing the tail
+#Detach the node
+        node.next = None
+        node.previous = None
