@@ -18,4 +18,8 @@ class LruCache:
 
 
     def get(self, key):
-        return self.cache[key]
+        if key in self.cache:
+            self.cache.move_to_end(key)
+            return self.cache[key]
+        else:
+            return None
