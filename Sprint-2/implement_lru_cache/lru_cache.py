@@ -6,6 +6,8 @@ class LruCache:
         self.cache = OrderedDict()
 
     def set(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
         self.cache[key] = value
         
     def get(self, key):
