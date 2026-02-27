@@ -24,18 +24,20 @@ class LinkedList:
 
 
     def pop_tail(self):
-        if self.tail is not None:
-            tail_node = self.tail
-            previous = self.tail.previous
-            self.tail = previous
-            if self.tail is not None:
-                self.tail.next = None
-            else:
-                self.head = None
-        else:
+        if self.tail is None:
             raise IndexError("Unable to remove from empty linked list")
+
+        #     tail_node = self.tail
+        #     previous = self.tail.previous
+        #     self.tail = previous
+        #     if self.tail is not None:
+        #         self.tail.next = None
+        #     else:
+        #         self.head = None
+        # else:
+            
         
-        return tail_node.data
+        # return tail_node.data
     
 
 
