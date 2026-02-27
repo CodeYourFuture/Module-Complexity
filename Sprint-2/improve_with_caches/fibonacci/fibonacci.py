@@ -4,8 +4,8 @@ def fibonacci(n):
     
     if n <= 1:
         cache[n] = n
-        return cache
+        return n
     
     result = fibonacci(n - 1) + fibonacci(n - 2)
     cache[n] = result
-    return cache
+    return result
