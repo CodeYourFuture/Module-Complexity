@@ -30,20 +30,13 @@ class LinkedList:
             raise IndexError("Pop from empty list")
         
         node = self.tail
-
-        if node.previous is None:
-            # One element
-            self.head = self.tail = None
-        else:
-            self.tail = node.previous
-            self.tail.next = None
+        self.remove(node)
         
         return node.value
     
     def remove(self, node):
         if node.previous:
             node.previous.next = node.next
-
         else:
             # removing head
             self.head = node.next
