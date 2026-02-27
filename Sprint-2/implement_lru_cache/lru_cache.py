@@ -4,7 +4,6 @@ class LruCache:
         self.cache = {}
 
     def set(self, key, value):
-        self.key = key
         self.cache[key] = value
         
     def get(self, key):
