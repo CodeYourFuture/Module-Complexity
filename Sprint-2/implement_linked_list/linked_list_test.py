@@ -34,6 +34,20 @@ class LinkedListTest(unittest.TestCase):
         self.assertIsNone(b.next)
         self.assertIsNone(b.previous)
 
+    def test_remove_middle(self):
+        l = LinkedList()
+        l.push_head("a")
+        b = l.push_head("b")
+        l.push_head("c")
+
+        l.remove(b)
+
+        self.assertIsNone(b.next)
+        self.assertIsNone(b.previous)
+
+        self.assertEqual(l.pop_tail(), "a")
+        self.assertEqual(l.pop_tail(), "c")
+
 
 if __name__ == "__main__":
     unittest.main()
