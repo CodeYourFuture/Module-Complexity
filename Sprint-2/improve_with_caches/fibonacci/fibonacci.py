@@ -5,4 +5,6 @@ def fibonacci(n):
         cache[n] = n
         return n
     
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    result = fibonacci(n - 1) + fibonacci(n - 2)
+    cache[n] = result
+    return result
