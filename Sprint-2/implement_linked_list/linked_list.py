@@ -32,13 +32,14 @@ class LinkedList:
         if self.head is None:
             return None
         elif self.head==self.tail:
-            node_value=self.head.value
-            self.head=None
-            self.tail=None
+            node_to_remove = self.head
+            node_value = node_to_remove.value
+            self.remove(node_to_remove)
+            
         else:
-            node_value=self.tail.value
-            previous_node=self.tail.previous   
-            self.tail=previous_node 
+           node_to_remove = self.tail
+           node_value = node_to_remove.value
+           self.remove(node_to_remove)
         return node_value    
     
     def remove(self,node) -> None:
@@ -64,6 +65,5 @@ class LinkedList:
             previous_node.next=next_node
             next_node.previous=previous_node
         
-        node_to_remove.next=None
-        node_to_remove.previous=None     
+    
 
