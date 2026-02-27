@@ -33,20 +33,7 @@ class LinkedList:
 
         node = self.tail
         value = node.value
-
-        # Move tail backwards
-        self.tail = node.previous
-
-        if self.tail is None:
-            # List is now empty
-            self.head = None
-        else:
-            self.tail.next = None
-
-        # Fully detach the old node (good hygiene)
-        node.next = None
-        node.previous = None
-
+        self.remove(node)
         return value
 
     def remove(self, node):
