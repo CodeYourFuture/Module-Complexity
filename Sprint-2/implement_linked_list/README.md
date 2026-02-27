@@ -11,3 +11,6 @@ It should support the following operations. Each operation should have a O(1) wo
 There are some tests in `linked_list_test.py` for your implementation - feel free to write more.
 
 * A branch was later created so that a PR can be pushed.
+
+
+* Make a new branch for implementing linked list in python
