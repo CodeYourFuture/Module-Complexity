@@ -21,7 +21,8 @@ class LruCache:
         """
         if key not in self.map:
             return None
-        node=self.map[key]   
+        node=self.map[key] 
+        self.list.remove(node)  
         self.list.push_head(node=node)
         return node.value  
 
@@ -39,7 +40,8 @@ class LruCache:
         """
         if key in self.map:
             node=self.map[key] 
-            node.value=value  
+            node.value=value 
+            self.list.remove(node) 
             self.list.push_head(node=node)
         else:
             if self.count>=self.limit:

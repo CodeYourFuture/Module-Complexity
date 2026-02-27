@@ -30,7 +30,7 @@ class LinkedList:
         if node is None:
            new_node=Node(key,value)
         else:
-            self.remove(node)
+            # self.remove(node)
             new_node=node 
 
         if self.head is None:
