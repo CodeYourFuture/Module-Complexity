@@ -1,34 +1,27 @@
 /**
  * Remove duplicate values from a sequence, preserving the order of the first occurrence of each value.
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity: for each element in the input is compared against all previous unique elements: o(n2) 
+ * Space Complexity: we store n elements it all elements are unique.
+ * Optimal Time Complexity: Each element is processed once O(1).
  *
  * @param {Array} inputSequence - Sequence to remove duplicates from
  * @returns {Array} New sequence with duplicates removed
  */
 export function removeDuplicates(inputSequence) {
+  const seenItems = new Set();
   const uniqueItems = [];
 
   for (
-    let currentIndex = 0;
-    currentIndex < inputSequence.length;
-    currentIndex++
+    let i = 0;
+    i < inputSequence.length;
+    i++
   ) {
-    let isDuplicate = false;
-    for (
-      let compareIndex = 0;
-      compareIndex < uniqueItems.length;
-      compareIndex++
-    ) {
-      if (inputSequence[currentIndex] === uniqueItems[compareIndex]) {
-        isDuplicate = true;
-        break;
-      }
-    }
-    if (!isDuplicate) {
-      uniqueItems.push(inputSequence[currentIndex]);
+    const value = inputSequence[i];
+
+    if (!seenItems.has(value)) {
+      seenItems.add(value);
+      uniqueItems.push(value);
     }
   }
 
