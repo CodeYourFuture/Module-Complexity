@@ -10,7 +10,7 @@ class LruCache:
             raise ValueError("limit must be greater than zero")
         self.limit=limit
         self.map={}
-        self.List=LinkedList()
+        self.list=LinkedList()
         self.count=0
 
     def get(self,key) ->any:
@@ -22,7 +22,7 @@ class LruCache:
         if key not in self.map:
             return None
         node=self.map[key]   
-        self.List.push_head(node=node)
+        self.list.push_head(node=node)
         return node.value  
 
 
@@ -40,14 +40,14 @@ class LruCache:
         if key in self.map:
             node=self.map[key] 
             node.value=value  
-            self.List.push_head(node=node)
+            self.list.push_head(node=node)
         else:
             if self.count>=self.limit:
-                old_key,old_value=self.List.pop_tail()
+                old_key,old_value=self.list.pop_tail()
                 del self.map[old_key]
                 self.count -=1
 
-            new_node=self.List.push_head(key=key,value=value)
+            new_node=self.list.push_head(key=key,value=value)
             self.count +=1
             self.map[key]=new_node
 
