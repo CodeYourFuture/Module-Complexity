@@ -1,7 +1,9 @@
+from collections import OrderedDict
+
 class LruCache:
     def __init__(self, limit):
         self.limit = limit
-        self.cache = {}
+        self.cache = OrderedDict()
 
     def set(self, key, value):
         self.cache[key] = value
