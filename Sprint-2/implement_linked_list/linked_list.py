@@ -27,17 +27,15 @@ class LinkedList:
         if self.tail is None:
             raise IndexError("Unable to remove from empty linked list")
 
-        #     tail_node = self.tail
-        #     previous = self.tail.previous
-        #     self.tail = previous
-        #     if self.tail is not None:
-        #         self.tail.next = None
-        #     else:
-        #         self.head = None
-        # else:
-            
+        tail_node = self.tail
+        previous = self.tail.previous
+        self.tail = previous
+        if self.tail is not None:
+            self.tail.next = None
+        else:
+            self.head = None
         
-        # return tail_node.data
+        return tail_node.data
     
 
 
