@@ -1,5 +1,6 @@
+ cache = {} 
+
 def fibonacci(n):
-    cache = {} 
     
     if n <= 1:
         cache[n] = n
