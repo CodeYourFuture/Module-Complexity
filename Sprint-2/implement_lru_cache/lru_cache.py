@@ -2,6 +2,8 @@ from collections import OrderedDict
 
 class LruCache:
     def __init__(self, limit):
+        if limit <= 0:
+            raise ValueError("Limit must be greater than zero")
         self.limit = limit
         self.cache = OrderedDict()
 
