@@ -50,6 +50,9 @@ class LinkedList:
         else:
             self.tail = node.previous
 
+        node.previous = None
+        node.next = None
+
   
 
 
