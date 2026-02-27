@@ -11,7 +11,7 @@ class LruCache:
             self.cache.move_to_end(key)
         else:
             if len(self.cache) >= self.limit:
-                self.cache.popitem(key)
+                self.cache.popitem(last=False)
 
         self.cache[key] = value
         
