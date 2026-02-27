@@ -6,17 +6,10 @@ class _Node:
         self.previous = None
 
 
-class LruCache:
-    def __init__(self, limit):
-        if limit <= 0:
-            raise ValueError("limit must be positive")
-
-        self.limit = limit
-        self.map = {}          # key -> _Node
-        self.head = None       # most recently used
-        self.tail = None       # least recently used
-
-    # ---- internal helpers for the linked list ----
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
     def _add_to_head(self, node):
         """Put node at the front (most recently used)."""
@@ -59,7 +52,14 @@ class LruCache:
         self._add_to_head(node)
 
     # ---- public API ----
-
+class LruCache:
+    def __init__(self, limit):
+        if limit <= 0:
+            raise ValueError("limit must be positive")
+        self.limit = limit
+        self.map = {}
+        self.list = DoublyLinkedList()
+        
     def get(self, key):
         node = self.map.get(key)
         if node is None:
