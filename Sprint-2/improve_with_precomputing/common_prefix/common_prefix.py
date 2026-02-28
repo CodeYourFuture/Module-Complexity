@@ -6,6 +6,8 @@ def find_longest_common_prefix(strings: List[str]):
     if len(strings) < 2:
         return ""
     
+    strings = sorted(strings)
+    
     longest = ""
     for string_index, string in enumerate(strings):
         for other_string in strings[string_index+1:]:
