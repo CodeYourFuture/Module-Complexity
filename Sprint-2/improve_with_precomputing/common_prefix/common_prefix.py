@@ -9,10 +9,9 @@ def find_longest_common_prefix(strings: List[str]):
     strings = sorted(strings)
     
     longest = ""
-    for string_index, string in enumerate(strings):
-        for other_string in strings[string_index+1:]:
-            common = find_common_prefix(string, other_string)
-            if len(common) > len(longest):
+    for i in range(len(strings) - 1):
+        common = find_common_prefix(strings[i], strings[i + 1])
+        if len(common) > len(longest):
                 longest = common
     return longest
 
