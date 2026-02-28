@@ -31,15 +31,8 @@ class LinkedList:
     def pop_tail(self) -> any:
         if self.head is None:
             return None
-        elif self.head==self.tail:
-            node_to_remove = self.head
-            node_value = node_to_remove.value
-            self.remove(node_to_remove)
-            
-        else:
-           node_to_remove = self.tail
-           node_value = node_to_remove.value
-           self.remove(node_to_remove)
+        node_value = self.tail.value
+        self.remove(self.tail)
         return node_value    
     
     def remove(self,node) -> None:
