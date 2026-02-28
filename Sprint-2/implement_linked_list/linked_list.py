@@ -29,11 +29,15 @@ class LinkedList:
 
         tail_node = self.tail
         previous = self.tail.previous
+
         self.tail = previous
         if self.tail is not None:
             self.tail.next = None
         else:
             self.head = None
+
+        tail_node.previous = None
+        tail_node.next = None
         
         return tail_node.data
     
