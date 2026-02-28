@@ -2,11 +2,10 @@ from typing import List
 
 
 def find_longest_common_prefix(strings: List[str]):
-    """
-    find_longest_common_prefix returns the longest string common at the start of any two strings in the passed list.
 
-    In the event that an empty list, a list containing one string, or a list of strings with no common prefixes is passed, the empty string will be returned.
-    """
+    if len(strings) < 2:
+        return ""
+    
     longest = ""
     for string_index, string in enumerate(strings):
         for other_string in strings[string_index+1:]:
