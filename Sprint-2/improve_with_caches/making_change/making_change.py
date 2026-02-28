@@ -1,5 +1,7 @@
 from typing import List
 
+cache = {}
+
 
 def ways_to_make_change(total: int) -> int:
     """
