@@ -15,7 +15,8 @@ def ways_to_make_change(total: int) -> int:
 
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     key = (total, tuple(coins))
-    
+    cache[key] = ways
+
     if total == 0 or len(coins) == 0:
         return 0
 
