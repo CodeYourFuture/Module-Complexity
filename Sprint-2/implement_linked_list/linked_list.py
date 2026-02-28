@@ -57,6 +57,9 @@ class LinkedList:
             next_node=node_to_remove.next
             previous_node.next=next_node
             next_node.previous=previous_node
+
+        node_to_remove.next=None
+        node_to_remove.previous=None         
         
     
 
