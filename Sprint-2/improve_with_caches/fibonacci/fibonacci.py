@@ -1,4 +1,6 @@
-def fibonacci(n, cache={}): 
+cache={}
+
+def fibonacci(n): 
     '''Adding a dictionary to store a copy of what we have already calculated, the complexity becomes linear.
     With the cache, each value is computed once, bringing it down to O(n)
     '''
