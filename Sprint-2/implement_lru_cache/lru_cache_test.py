@@ -1,5 +1,4 @@
 import unittest
-
 from lru_cache import LruCache
 
 class LruCacheTest(unittest.TestCase):
@@ -53,7 +52,6 @@ class LruCacheTest(unittest.TestCase):
         self.assertIsNone(cache.get("b"))
         self.assertEqual(cache.get("a"), 1)
         self.assertEqual(cache.get("c"), 3)
-
 
 if __name__ == "__main__":
     unittest.main()
