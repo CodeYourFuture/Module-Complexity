@@ -16,12 +16,10 @@ class LinkedList:
         new_node.next = self.head
         if self.head:
             self.head.previous = new_node
-
-        self.head = new_node
-
-        if self.tail is None:
+        else:
             self.tail = new_node
 
+        self.head = new_node
         return new_node
 
     def pop_tail(self):
@@ -44,6 +42,8 @@ class LinkedList:
             node.previous.next = node.next
         else:
             self.head = node.next
+            if self.head:
+                self.head.previous = None
 
         if node.next:
             node.next.previous = node.previous
