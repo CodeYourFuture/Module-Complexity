@@ -14,8 +14,10 @@ def find_common_items(
     Optimal time complexity:
     """
     common_items: List[ItemType] = []
+    second_sequence_set = set(second_sequence)
+
     for i in first_sequence:
-        for j in second_sequence:
-            if i == j and i not in common_items:
-                common_items.append(i)
+        if i in second_sequence_set and i not in common_items:
+            common_items.append(i)
+
     return common_items
