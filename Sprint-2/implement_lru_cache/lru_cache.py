@@ -19,7 +19,6 @@ class LruCache:
     # ---------------------
     # Internal helpers
     # ---------------------
-
     def _remove_node(self, node):
         if node.previous:
             node.previous.next = node.next

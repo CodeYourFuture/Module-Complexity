@@ -53,6 +53,5 @@ class LruCacheTest(unittest.TestCase):
         self.assertEqual(cache.get("a"), 1)
         self.assertEqual(cache.get("c"), 3)
 
-
 if __name__ == "__main__":
     unittest.main()
