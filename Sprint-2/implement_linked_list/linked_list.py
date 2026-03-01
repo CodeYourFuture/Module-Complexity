@@ -37,7 +37,7 @@ class LinkedList:
             self.head = None
 
         tail_node.previous = None
-        tail_node.next = None
+       
         
         return tail_node.data
     
