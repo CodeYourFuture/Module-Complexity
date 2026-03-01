@@ -1,5 +1,4 @@
 import unittest
-
 from making_change import ways_to_make_change
 
 class MakingChangeTest(unittest.TestCase):
