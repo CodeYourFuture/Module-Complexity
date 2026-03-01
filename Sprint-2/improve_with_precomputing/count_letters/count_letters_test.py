@@ -1,7 +1,6 @@
 import random
 import string
 import unittest
-
 from count_letters import count_letters
 
 class CommonPrefixTest(unittest.TestCase):

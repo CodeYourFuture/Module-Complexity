@@ -1,7 +1,6 @@
 import random
 import string
 import unittest
-
 from common_prefix import find_longest_common_prefix
 
 class CommonPrefixTest(unittest.TestCase):
