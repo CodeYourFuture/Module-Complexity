@@ -32,7 +32,7 @@ class LinkedList:
             raise IndexError("pop_tail from empty linked list")
 
         value = self.tail.value
-        self.remove(self.tail)  # Delegate actual removal to remove()
+        self.remove(self.tail)  
         return value
 
     def remove(self, node: Node):
