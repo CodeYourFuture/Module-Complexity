@@ -20,7 +20,6 @@ def find_longest_common_prefix(strings: List[str]) -> str:
     return longest
 
 
-@lru_cache(maxsize=None)
 def cached_find_common_prefix(left: str, right: str) -> str:
     min_length = min(len(left), len(right))
     for i in range(min_length):
