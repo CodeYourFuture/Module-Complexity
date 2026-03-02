@@ -10,12 +10,12 @@ def find_longest_common_prefix(strings: List[str]):
     if len(strings) < 2:
         return ""
     # reducing comparison by sorting places strings with similar prefixes next to each other...
-    strings.sort()
+    sorted_strings = sorted(strings)
 
     longest = ""
-    for i in range(len(strings) - 1):
+    for i in range(len(sorted_strings) - 1):
         # compares only adjacent strings after sorting
-        common = find_common_prefix(strings[i], strings[i + 1])
+        common = find_common_prefix(sorted_strings[i], sorted_strings[i + 1])
         if len(common) > len(longest):
             longest = common
     return longest
