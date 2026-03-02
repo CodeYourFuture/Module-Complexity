@@ -55,3 +55,6 @@ class LinkedList:
         else:
             node.previous.next = node.next
             node.next.previous = node.previous
+        
+        node.next = None
+        node.previous = None
