@@ -30,6 +30,7 @@ def ways_to_make_change_helper(
     ways = 0
 
     # the remaining coins can complete whatever total is left over
+    count = 1
     while coin * count <= total:
         ways += ways_to_make_change_helper(total - coin * count, coins, coin_index + 1, cache)
         count += 1
