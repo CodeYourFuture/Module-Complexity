@@ -10,11 +10,8 @@
  * @param {number} target - Target sum to find
  * @returns {boolean} True if pair exists, false otherwise
  */
-// export function hasPairWithSum(numbers, target) {
-// we are now making a cake from cake slices
-// numbers are now slices of cake and target is a a number of slices taht makes a whole cake
 
-export function hasPairWithSum(slices, targetWholeCake) {
+export function hasPairWithSum(numbers, target) {
 	// for (let i = 0; i < numbers.length; i++) {
 	//   for (let j = i + 1; j < numbers.length; j++) {
 	//     if (numbers[i] + numbers[j] === target) {
@@ -22,16 +19,17 @@ export function hasPairWithSum(slices, targetWholeCake) {
 	//     }
 	//   }
 	// }
-	const inventoryOfSlices = {};
 
-	for (const slice of slices) {
-		const missingPieces = targetWholeCake - slice;
+	const inventory = {};
 
-		if (inventoryOfSlices[missingPieces]) {
+	for (const num of numbers) {
+		const needed = target - num;
+
+		if (inventory[needed]) {
 			return true;
 		}
 
-		inventoryOfSlices[slice] = true; // add slice
+		inventory[num] = true;
 	}
 	return false;
 }

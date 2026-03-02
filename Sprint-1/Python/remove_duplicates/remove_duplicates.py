@@ -25,10 +25,10 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     # return unique_items
 
 
-    itemsWeChecked = {}
+    items_we_checked = {}
     for item in values:
-        if item not in itemsWeChecked:
+        if item not in items_we_checked:
             unique_items.append(item)
-            itemsWeChecked[item] = True
+            items_we_checked[item] = True
 	
     return unique_items

@@ -16,7 +16,7 @@
 export const findCommonItems = (firstArray, secondArray) => {
 	//   ...new Set(firstArray.filter((item) => secondArray.includes(item))),
 	const dictToCheck = {};
-	const doubled = [];
+	const common = [];
 
 	for (const item of firstArray) {
 		dictToCheck[item] = true;
@@ -28,5 +28,5 @@ export const findCommonItems = (firstArray, secondArray) => {
 			dictToCheck[item] = false;
 		}
 	}
-	return doubled;
+	return common;
 };

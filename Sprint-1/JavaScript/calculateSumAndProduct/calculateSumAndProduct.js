@@ -9,8 +9,8 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity: O(N) 2 for loops for loops are 0
- * Space Complexity: O(1) 2 variables
+ * Time Complexity: O(N) the previous two loops are swapped into one loop
+ * Space Complexity: O(1) 2 variables - sum and product
  * Optimal Time Complexity: O(N)
  *
  * @param {Array<number>} numbers - Numbers to process

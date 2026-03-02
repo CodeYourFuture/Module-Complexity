@@ -20,15 +20,15 @@ def find_common_items(
     #             common_items.append(i)
     # return common_items
 
-    dictToCheck = {}
+    dict_to_check = {}
 
     for item in first_sequence:
-	    	dictToCheck[item] = True
+            dict_to_check[item] = True
 	
-    for item in second_sequence:	
-           if item in dictToCheck:
-                common_items.append(item)
-                dictToCheck.pop(item)
+    for item in second_sequence:
+        if item in dict_to_check:
+            common_items.append(item)
+            dict_to_check.pop(item)
 	
     return common_items
 	
