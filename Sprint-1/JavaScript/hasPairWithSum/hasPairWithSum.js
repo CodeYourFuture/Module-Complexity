@@ -1,9 +1,9 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity: O(n)
+ * Initial Time Complexity: O(n²) [nested loops]
  * Space Complexity: O(n)
- * Optimal Time Complexity: O(n)
+ * Optimal Time Complexity: O(n) [with Set]
  *
  * @param {Array<number>} numbers - Array of numbers to search through
  * @param {number} target - Target sum to find

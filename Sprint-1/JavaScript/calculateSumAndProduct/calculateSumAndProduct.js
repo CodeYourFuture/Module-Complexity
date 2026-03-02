@@ -9,9 +9,9 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity: O(n)
+ * Initial Time Complexity: O(n) [multiple passes]
  * Space Complexity: O(1)
- * Optimal Time Complexity: O(n)
+ * Optimal Time Complexity: O(n) [single pass]
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product

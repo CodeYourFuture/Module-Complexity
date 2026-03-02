@@ -1,9 +1,9 @@
 /**
  * Remove duplicate values from a sequence, preserving the order of the first occurrence of each value.
  *
- * Time Complexity: O(n)
+ * Initial Time Complexity: O(n²) [nested loops]
  * Space Complexity: O(n)
- * Optimal Time Complexity: O(n)
+ * Optimal Time Complexity: O(n) [with Set]
  *
  * @param {Array} inputSequence - Sequence to remove duplicates from
  * @returns {Array} New sequence with duplicates removed

@@ -1,9 +1,9 @@
 /**
  * Finds common items between two arrays.
  *
- * Time Complexity: O(n + m)
+ * Initial Time Complexity: O(n × m) [filter with includes]
  * Space Complexity: O(n + m)
- * Optimal Time Complexity: O(n + m)
+ * Optimal Time Complexity: O(n + m) [with Set]
  *
  * @param {Array} firstArray - First array to compare
  * @param {Array} secondArray - Second array to compare
