@@ -1,45 +1,52 @@
-from typing import List
+from typing import Dict, Tuple
+
+COINS = [200, 100, 50, 20, 10, 5, 2, 1]
+
 
 def ways_to_make_change(total: int) -> int:
     """
-    Given access to coins with the values 1, 2, 5, 10, 20, 50, 100, 200,
-    returns a count of all of the ways to make the passed total value.
+    Returns the number of ways to make `total` using UK coin values.
     """
-    cache = {}
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1], cache)
+    cache: Dict[Tuple[int, int], int] = {}
+    return _helper(total, 0, cache)
 
 
-def ways_to_make_change_helper(total: int, coins: List[int], cache: dict) -> int:
+def _helper(total: int, coin_index: int, cache: Dict[Tuple[int, int], int]) -> int:
     """
-    Helper function with memoization.
-    Cache key is (total, index of first coin in list) — but since we pass
-    the coins list by slicing, we can cache using tuple(total, tuple(coins)).
+    Recursive helper using memoization.
+
+    Parameters:
+    - total: remaining amount to form
+    - coin_index: index into COINS representing which coins we are allowed to use
+    - cache: memoization dictionary
     """
 
-    key = (total, tuple(coins))
+    # Base case: exact match
+    if total == 0:
+        return 1
 
+    # Base case: no coins left
+    if coin_index == len(COINS):
+        return 0
+
+    key = (total, coin_index)
+    
+    # If we’ve already solved: return the cached result, We just return the stored answer instead of recomputing it
     if key in cache:
         return cache[key]
 
-    if total == 0 or len(coins) == 0:
-        return 0
-
+    # CORE LOGIC: 
     ways = 0
-    for coin_index in range(len(coins)):
-        coin = coins[coin_index]
-        count_of_coin = 1
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
-            if total_from_coins == total:
-                ways += 1
-            else:
-                intermediate = ways_to_make_change_helper(
-                    total - total_from_coins,
-                    coins=coins[coin_index + 1:],
-                    cache=cache
-                )
-                ways += intermediate
-            count_of_coin += 1
+    coin = COINS[coin_index]
+
+    # Try using this coin 0, 1, 2, ... times
+    # The maximum number of this coin we could use without exceeding total.
+    max_count = total // coin
+
+    # For each possible count of this coin, we compute the remaining amount and recursively call _helper for the next coin.
+    for count in range(max_count + 1):
+        remaining = total - (coin * count)
+        ways += _helper(remaining, coin_index + 1, cache)
 
     cache[key] = ways
     return ways
