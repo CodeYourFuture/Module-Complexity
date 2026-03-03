@@ -34,6 +34,8 @@ class LinkedList:
         else:
             self.head = None
         
+        node_to_be_removed.prev = None
+        node_to_be_removed.next = None
         return node_to_be_removed.value
 
     def remove(self, node):
