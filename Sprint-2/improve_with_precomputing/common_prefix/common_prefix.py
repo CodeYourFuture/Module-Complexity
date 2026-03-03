@@ -22,3 +22,14 @@ def find_common_prefix(left: str, right: str) -> str:
         if left[i] != right[i]:
             return left[:i]
     return left[:min_length]
+
+
+"""
+The new implementation sorts a string first, then compares each string
+with the one that comes after it. On the other hand, the original imple-
+mentation compares each string with every single while looping through
+nested for loop. 
+As a result, the compelxity time drops from the original O(n^2 * m) to
+around O(n log n * m).
+
+"""
