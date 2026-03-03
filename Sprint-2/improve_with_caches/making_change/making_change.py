@@ -26,7 +26,7 @@ def ways_to_make_change_helper(total: int, coin_index :int) -> int:
    
     coin = coins[coin_index]
     count_of_coin = 0
-    while count_of_coin * count_of_coin <= total:
+    while count_of_coin * coin <= total:
         ways += ways_to_make_change_helper(
             total - count_of_coin * coin,
             coin_index + 1
