@@ -10,7 +10,7 @@ def ways_to_make_change(total: int) -> int:
 
 
 def ways_to_make_change_helper(total: int, coin_index :int) -> int:
-    key = (total, tuple(coins))
+    key = (total, coin_index)
     
 
     if total == 0 or len(coins) == 0:
