@@ -11,7 +11,7 @@ def find_common_items(
 
     Time Complexity: for each element in first_sequence, is compared against every element in second_sequence.  
     Space Complexity: O(the number of unique common elements) 
-    Optimal time complexity: improved using a set for fast lookups
+    Optimal time complexity: The time complexity is O(n + m) and the space complexity is O(n + m).
     """
     second_set = set(second_sequence)
     seen = set()
