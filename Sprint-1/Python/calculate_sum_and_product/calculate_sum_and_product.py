@@ -18,7 +18,7 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
     Space Complexity:
         space is constant O(1)
     Optimal time complexity:
-        With only one loop for both operations reduce complexity to o(1)
+        With one loop for both operations, must iterate through all n elements in the list, so the overall time complexity is O(n).
     """
     # Edge case: empty list
     if not input_numbers:
