@@ -10,12 +10,12 @@ def find_longest_common_prefix(strings: List[str]):
     if len(strings) < 2:
         return ""
     
-    strings.sort()
+    sorted_strings = sorted(strings)
     longest = ""
 
-    for i in range(len(strings) - 1):
-        first_string = strings[i]
-        second_string = strings[i + 1]
+    for i in range(len(sorted_strings) - 1):
+        first_string = sorted_strings[i]
+        second_string = sorted_strings[i + 1]
         
         common = find_common_prefix(first_string, second_string)
         
