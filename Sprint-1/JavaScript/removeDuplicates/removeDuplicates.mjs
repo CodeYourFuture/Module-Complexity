@@ -10,20 +10,10 @@
  */
 export function removeDuplicates(inputSequence) {
   const seenItems = new Set();
-  const uniqueItems = [];
 
-  for (
-    let i = 0;
-    i < inputSequence.length;
-    i++
-  ) {
-    const value = inputSequence[i];
-
-    if (!seenItems.has(value)) {
+  for (const value of inputSequence) {
       seenItems.add(value);
-      uniqueItems.push(value);
-    }
   }
 
-  return uniqueItems;
+  return Array.from(seenItems);
 }
