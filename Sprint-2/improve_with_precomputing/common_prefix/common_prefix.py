@@ -12,7 +12,7 @@ def find_longest_common_prefix(strings: List[str]):
     for i in range(len(strings) - 1):
         common = find_common_prefix(strings[i], strings[i + 1])
         if len(common) > len(longest):
-                longest = common
+            longest = common
     return longest
 
 
