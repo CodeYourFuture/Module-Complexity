@@ -9,8 +9,8 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:O(2n) originall have this as using 2 separate loops
- * Space Complexity:O(1) no extra space used that rows with input
+ * Time Complexity:O(n) because constant multipliers are ignored in Big-O notation.
+ * Space Complexity:O(1) no extra space used that grows with input
  * Optimal Time Complexity:O(n) must at least visit each number once
  *
  * @param {Array<number>} numbers - Numbers to process

@@ -1,8 +1,8 @@
 /**
  * Finds common items between two arrays.
  *
- * Time Complexity:O(n+m) it build set and loop through arrays once
- * Space Complexity: store second array in set
+ * Time Complexity:O(n+m) it build set and loop through the first array
+ * Space Complexity: O(m) space proportional to size of second array
  * Optimal Time Complexity:O(m+n)
  *
  * @param {Array} firstArray - First array to compare
