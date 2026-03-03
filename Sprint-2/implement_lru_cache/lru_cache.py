@@ -1,10 +1,4 @@
-class Node:
-    def __init__(self, key, value):
-        self.key = key
-        self.value = value
-        self.previous = None
-        self.next = None
-
+from collections import OrderedDict
 
 class LruCache:
     def __init__(self, limit):
@@ -12,6 +6,7 @@ class LruCache:
             raise ValueError("Limit must be positive")
 
         self.limit = limit
+<<<<<<< HEAD
         self.cache = {}  # key -> node
         self.head = None  # Most recently used
         self.tail = None  # Least recently used
@@ -48,35 +43,27 @@ class LruCache:
     # ---------------------
     # Public API
     # ---------------------
+=======
+        self.cache = OrderedDict()
+>>>>>>> fc65c37 (lru cache update)
 
     def get(self, key):
-        node = self.cache.get(key)
-        if not node:
+        if key not in self.cache:
             return None
 
-        # Move to head (recently used)
-        self._remove_node(node)
-        self._add_to_head(node)
-
-        return node.value
+        # Move key to the end (most recently used)
+        value = self.cache.pop(key)
+        self.cache[key] = value
+        return value
 
     def set(self, key, value):
-        node = self.cache.get(key)
+        if key in self.cache:
+            # Update existing and move to end
+            self.cache.pop(key)
 
-        if node:
-            # Update value and move to head
-            node.value = value
-            self._remove_node(node)
-            self._add_to_head(node)
-            return
+        elif len(self.cache) >= self.limit:
+            # Remove least recently used (first item)
+            self.cache.popitem(last=False)
 
-        # If full, evict LRU (tail)
-        if len(self.cache) >= self.limit:
-            lru = self.tail
-            self._remove_node(lru)
-            del self.cache[lru.key]
-
-        # Insert new node
-        new_node = Node(key, value)
-        self._add_to_head(new_node)
-        self.cache[key] = new_node
+        # Insert as most recently used
+        self.cache[key] = value
