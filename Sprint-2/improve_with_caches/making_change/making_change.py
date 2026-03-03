@@ -17,16 +17,17 @@ def ways_to_make_change_helper(total: int, coin_index :int) -> int:
         return 0
 
     ways = 0
-    for coin_index in range(len(coins)):
-        count_of_coin = 1
-        while coins * count_of_coin <= total:
-            total_from_coins = coins * count_of_coin
-            if total_from_coins == total:
-                ways += 1
-            else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
-                ways += intermediate
-            count_of_coin += 1
+   
+    coin = coins[coin_index]
+    count_of_coin = 1
+    while coins * count_of_coin <= total:
+        total_from_coins = coins * count_of_coin
+        if total_from_coins == total:
+            ways += 1
+        else:
+            intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
+            ways += intermediate
+        count_of_coin += 1
             
     cache[key] = ways
 
