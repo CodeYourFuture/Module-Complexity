@@ -41,18 +41,13 @@ class LinkedList: # A doubly linked list data structure
 
     def pop_tail(self):
         if not self.tail:
-           return None
+            return None
 
         old_tail = self.tail
         value = old_tail.value
 
-        if old_tail.previous:
-          self.tail = old_tail.previous
-          self.tail.next = None
-        else:
-           # Only one element
-           self.head = None
-           self.tail = None
+        self.remove(old_tail)  # handles pointer updates + cleanup
 
         return value
+    
 
