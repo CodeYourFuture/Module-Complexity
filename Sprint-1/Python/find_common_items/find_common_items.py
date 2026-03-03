@@ -9,8 +9,8 @@ def find_common_items(
     """
     Find common items between two arrays.
 
-    Time Complexity: for each element in first_sequence, is compared against every element in second_sequence.  
-    Space Complexity: O(the number of unique common elements) 
+    Time Complexity: The time complexity is O(n + m) because we build a set from the second sequence in O(m) time and iterate through the first sequence in O(n) time.
+    Space Complexity: The space complexity is O(n + m) because we store up to all elements of the second sequence in a set and up to the common elements in additional storage. 
     Optimal time complexity: The time complexity is O(n + m) and the space complexity is O(n + m).
     """
     second_set = set(second_sequence)
