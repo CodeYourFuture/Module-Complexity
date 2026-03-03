@@ -50,7 +50,6 @@ class LruCache:
     def get(self, key):
         if key not in self.cache:
             return None
-
         # Move key to the end (most recently used)
         value = self.cache.pop(key)
         self.cache[key] = value
