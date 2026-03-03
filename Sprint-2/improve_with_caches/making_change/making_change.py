@@ -6,7 +6,7 @@ cache = {}
 
 def ways_to_make_change(total: int) -> int:
 
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
+    return ways_to_make_change_helper(total, 0)
 
 
 def ways_to_make_change_helper(total: int, coin_index :int) -> int:
