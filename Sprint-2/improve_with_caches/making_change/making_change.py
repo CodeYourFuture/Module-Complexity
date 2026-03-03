@@ -9,7 +9,7 @@ def ways_to_make_change(total: int) -> int:
     return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
 
 
-def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
+def ways_to_make_change_helper(total: int, coin_index :int) -> int:
     key = (total, tuple(coins))
     
 
