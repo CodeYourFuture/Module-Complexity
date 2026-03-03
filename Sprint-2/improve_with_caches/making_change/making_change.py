@@ -13,14 +13,14 @@ def ways_to_make_change_helper(total: int, coin_index :int) -> int:
     key = (total, coin_index)
     
 
-    if total == 0 or len(coins) == 0:
+    if coin_index == len(coins):
         return 0
 
     ways = 0
     for coin_index in range(len(coins)):
         count_of_coin = 1
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
+        while coins * count_of_coin <= total:
+            total_from_coins = coins * count_of_coin
             if total_from_coins == total:
                 ways += 1
             else:
