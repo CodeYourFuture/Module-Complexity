@@ -11,6 +11,9 @@ def ways_to_make_change(total: int) -> int:
 
 def ways_to_make_change_helper(total: int, coin_index :int) -> int:
     key = (total, coin_index)
+
+    if key in cache:
+        return cache[key]
     
 
     if coin_index == len(coins):
