@@ -6,7 +6,7 @@
 class Node:
     def __init__(self, value):
         self.value = value      
-        self.prev = None        
+        self.previous = None        
         self.next = None       
 
 
@@ -24,7 +24,7 @@ class LinkedList:
             self.tail = node    
         else:
             node.next = self.head   
-            self.head.prev = node   
+            self.head.previous = node   
             self.head = node        
 
         return node  # returns the node so we can remove it later
@@ -34,26 +34,24 @@ class LinkedList:
         if self.tail is None:   
             raise Exception("List is empty")
 
-        value = self.tail.value  # value to return
+        removed = self.tail 
 
-        if self.head == self.tail:  # if only one element
-            self.head = None
-            self.tail = None
-        else:
-            self.tail = self.tail.prev  # move tail back
-            self.tail.next = None       # remove old tail connection
+        self.remove(removed)
 
-        return value
+        return removed.value
 
     # removes a specific node 
     def remove(self, node):
 
-        if node.prev is None:   # if removing head
+        if node.previous is None:   # if removing head
             self.head = node.next
         else:
-            node.prev.next = node.next  # connect previous to next
+            node.previous.next = node.next  # connect previous to next
 
         if node.next is None:   # if removing tail
-            self.tail = node.prev
+            self.tail = node.previous
         else:
-            node.next.prev = node.prev  # connect next to previous
+            node.next.previous = node.previous  # connect next to previous
+    # unplugging node
+    node.next = None
+    node.previous = None
