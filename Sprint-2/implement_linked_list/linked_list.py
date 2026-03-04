@@ -54,13 +54,4 @@ class LinkedList:
     def pop_tail(self):
         if not self.tail:
             return None
-
-        old_tail = self.tail
-        if old_tail.prev:
-            self.tail = old_tail.prev
-            self.tail.next = None
-        else:
-            self.head = self.tail = None
-
-        return old_tail.inserted_item_key
-                
+        return self.remove(self.tail)
