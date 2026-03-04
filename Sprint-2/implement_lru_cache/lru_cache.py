@@ -1,95 +1,91 @@
-'''
-if an item needs to be evicted, the item which was least recently used will be evicted. 
-Both setting or getting a value counts as a use.
-It should support the following operations. Each operation should have a O(1) worst-case time complexity.
-* `LruCache(limit)` should construct an LRU cache which never stores more than `limit` entries.
-* `set(key, value)` should associate `value` with the passed `key`.
-* `get(key)` should look-up the value previously associated with `key`.
-'''
 
 class Node:
     def __init__(self, key, value):
-        self.key = key        # store the key
-        self.value = value    # store the value
-        self.prev = None      # previous node in list
-        self.next = None      # next node in list
+        self.key = key
+        self.value = value      
+        self.previous = None        
+        self.next = None       
+class LinkedList:
+    def __init__(self):
+        self.head = None        
+        self.tail = None        
 
+    # adding a new value in the front of the list
+    def push_head(self, node):
+        node.previous = None
+        node.next = self.head      
+
+        if self.head is None:   # if list is empty head and tail becomes this node.
+            self.head = node    
+            self.tail = node    
+        else:
+            self.head.previous = node   
+            self.head = node        
+
+        return node  # returns the node so we can remove it later
+    
+    # removing last element
+    def pop_tail(self):
+        if self.tail is None:   
+            raise Exception("List is empty")
+
+        removed = self.tail 
+        self.remove(removed)
+        return removed
+
+    # removes a specific node 
+    def remove(self, node):
+
+        if node.previous is None:   # if removing head
+            self.head = node.next
+        else:
+            node.previous.next = node.next  # connect previous to next
+
+        if node.next is None:   # if removing tail
+            self.tail = node.previous
+        else:
+            node.next.previous = node.previous  # connect next to previous
+    # unplugging node
+        node.next = None
+        node.previous = None
 
 class LruCache:
-    def __init__(self, limit):
-
+    def __init__(self,limit) -> None:
+        if limit <= 0:
+            raise ValueError("Limit must be greater than zero")
         self.limit = limit
-        self.data = {}        
-        self.first = None     
-        self.last = None      
 
+        self.storage =  {} 
+        self.order = LinkedList()
+        pass
+
+    #If key already exists move it to MRU
+    def touch (self,node):
+        self.order.remove(node)
+        self.order.push_head(node)
+    
+    # If we want to add or update a key value pair
     def set(self, key, value):
-
-        if key in self.data:
-            node = self.data[key]
-            node.value = value   
-
-            # when node is used, is move to front
-            if node != self.first:
-
-                if node.prev:
-                    node.prev.next = node.next
-                if node.next:
-                    node.next.prev = node.prev
-
-                if node == self.last:
-                    self.last = node.prev
-
-                node.prev = None
-                node.next = self.first
-                self.first.prev = node
-                self.first = node
-
+        if key in self.storage:
+            node = self.storage[key]   #update the value of the key 
+            node.value = value
+            self.touch(node)
             return
+        
+        #if we are adding a new key and at our limit 
+        if len(self.storage) >= self.limit:
+            lru_node =self.order.pop_tail()
+            del self.storage[lru_node.key]
 
-        # create new node when key doesn't exit
-        node = Node(key, value)
-        self.data[key] = node
-
-        node.next = self.first
-        if self.first:
-            self.first.prev = node
-        self.first = node
-
-        if self.last is None:
-            self.last = node
-
-        # remove last when size is bigger than limit 
-        if len(self.data) > self.limit:
-            old = self.last
-
-            del self.data[old.key]
-
-            self.last = old.prev
-            if self.last:
-                self.last.next = None
-
-    def get(self, key):
-
-        if key not in self.data:
+        #insert a new node
+        new_node = Node(key, value)
+        self.order.push_head(new_node)
+        self.storage[key] = new_node
+       
+    # updating position to most recently used 
+    def get(self,key):
+        if key not in self.storage:
             return None
-
-        node = self.data[key]
-
-        # moving node to front because was used
-        if node != self.first:
-
-            if node.prev:
-                node.prev.next = node.next
-            if node.next:
-                node.next.prev = node.prev
-
-            if node == self.last:
-                self.last = node.prev
-
-            node.prev = None
-            node.next = self.first
-            self.first.prev = node
-            self.first = node
-
+        node = self.storage[key]
+        self.touch(node)
         return node.value
