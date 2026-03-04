@@ -27,15 +27,7 @@ class LinkedList:
         if self.tail is None:
             return
         node_to_be_removed = self.tail
-        self.tail = node_to_be_removed.prev
-
-        if self.tail is not None:
-            self.tail.next = None
-        else:
-            self.head = None
-        
-        node_to_be_removed.prev = None
-        node_to_be_removed.next = None
+        self.remove(node_to_be_removed)
         return node_to_be_removed.value
 
     def remove(self, node):
