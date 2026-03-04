@@ -23,7 +23,7 @@ def find_common_items(
     dict_to_check = {}
 
     for item in first_sequence:
-            dict_to_check[item] = True
+        dict_to_check[item] = True
 	
     for item in second_sequence:
         if item in dict_to_check:

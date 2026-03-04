@@ -24,7 +24,7 @@ export const findCommonItems = (firstArray, secondArray) => {
 
 	for (const item of secondArray) {
 		if (dictToCheck[item]) {
-			doubled.push(item);
+			common.push(item);
 			dictToCheck[item] = false;
 		}
 	}
