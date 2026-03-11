@@ -6,7 +6,7 @@ def count_letters(s: str) -> int:
     
     chars = set(s)  #store all characters once
 
-    for letter in s:
+    for letter in chars:
         if is_upper_case(letter):
             if letter.lower() not in chars:
                 only_upper.add(letter)
