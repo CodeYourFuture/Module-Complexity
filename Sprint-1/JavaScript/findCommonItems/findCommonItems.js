@@ -3,22 +3,23 @@
  *
  * Time Complexity:
  *        ANSWER: O(n + m)
-          Because the second array is converted into a Set once, and the first array is looped through once.
+          Because both arrays are processed once and we iterate through them to find common elements.
 
  * Space Complexity: 
-          ANSWER: O(n)
-          Because a Set is used to store unique common item 
+          ANSWER: O(n + m)
+          because two sets are created
           
  * Optimal Time Complexity:
           ANSWER: O(n + m)
-          Possible by using a Set for faster lookup
+          Because we must check all elements in both arrays (or sets) at least once.
  *
  * @param {Array} firstArray - First array to compare
  * @param {Array} secondArray - Second array to compare
  * @returns {Array} Array containing unique common items
  */
 export const findCommonItems = (firstArray, secondArray) => {
+  const firstSet = new Set(firstArray);
   const secondSet = new Set(secondArray);
 
-  return [...new Set(firstArray.filter(item => secondSet.has(item)))];
+  return [...firstSet.intersection(secondSet)];
 };
