@@ -23,11 +23,11 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
     if not input_numbers:
         return {"sum": 0, "product": 1}
 
-    total_sum = 0
-    total_product = 1
+    sum = 0
+    product = 1
 
     for current_number in input_numbers:
-        total_sum += current_number
-        total_product *= current_number
+        sum += current_number
+        product *= current_number
 
-    return {"sum": total_sum, "product": total_product}
+    return {"sum": sum, "product": product}
