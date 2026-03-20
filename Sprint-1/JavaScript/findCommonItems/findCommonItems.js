@@ -6,9 +6,7 @@
  *   resulting in O(n * m) worst-case time.
  *
  * Time Complexity: O(n + m) average
- * Space Complexity:  O(m + k) where:
- * - m = secondArray length (Set storage)
- * - k = number of unique common items (result Set storage)
+ * Space Complexity:  O(m)
  * Optimal Time Complexity:  O(n + m)
  *
  * @param {Array} firstArray - First array to compare
@@ -17,11 +15,6 @@
  */
 export const findCommonItems = (firstArray, secondArray) => {
   const setB = new Set(secondArray);
-  const common = new Set();
 
-  for (const item of firstArray) {
-    if (setB.has(item)) common.add(item);
-  }
-
-  return [...common];
+  return [...new Set(firstArray.filter(item => setB.has(item)))];
 };
