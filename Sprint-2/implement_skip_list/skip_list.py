@@ -23,49 +23,49 @@ class SkipList:
 
     def insert(self, value):
         update = [None] * (self.MAX_LEVEL + 1)
-        x = self.head
+        current = self.head
 
         # Find the place where the new value should go
-        for i in range(self.level, -1, -1):
-            while x.next[i] and x.next[i].value < value:
-                x = x.next[i]
-            update[i] = x
+        for level in range(self.level, -1, -1):
+            while current.next[level] and current.next[level].value < value:
+                current = current.next[level]
+            update[level] = current
 
-        x0 = x.next[0]
-        if x0 and x0.value == value:
+        next_node = current.next[0]
+        if next_node and next_node.value == value:
             return
 
         node_level = self._random_level()
 
         if node_level > self.level:
-            for i in range(self.level + 1, node_level + 1):
-                update[i] = self.head
+            for level in range(self.level + 1, node_level + 1):
+                update[level] = self.head
             self.level = node_level
 
         new_node = Node(value, node_level)
-        for i in range(node_level + 1):
-            new_node.next[i] = update[i].next[i]
-            update[i].next[i] = new_node
+        for level in range(node_level + 1):
+            new_node.next[level] = update[level].next[level]
+            update[level].next[level] = new_node
     
     # Check if value exists
     def contains(self, value):
-        x = self.head
-        for lvl in range(self.level, -1, -1):
-            while x.next[lvl] and x.next[lvl].value < value:
-                x = x.next[lvl]
+        current = self.head
+        for level in range(self.level, -1, -1):
+            while current.next[level] and current.next[level].value < value:
+                current = current.next[level]
 
-        x = x.next[0]
-        return x is not None and x.value == value
+        candidate = current.next[0]
+        return candidate is not None and candidate.value == value
 
     def __contains__(self, value):
         return self.contains(value)
 
     def to_list(self):
         result = []
-        x = self.head.next[0]
-        while x:
-            result.append(x.value)
-            x = x.next[0]
+        current = self.head.next[0]
+        while current:
+            result.append(current.value)
+            current = current.next[0]
         return result
 
     
