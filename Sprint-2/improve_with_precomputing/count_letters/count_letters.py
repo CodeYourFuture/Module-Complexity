@@ -1,6 +1,12 @@
 def count_letters(s: str) -> int:
     """
     count_letters returns the number of letters which only occur in upper case in the passed string.
+
+    Optimisation:
+    - Convert string to set
+    - Avoid checking the whole string every time
+
+    Complicity: O(n^2) -> O(n)
     """
     chars = set(s)  # precompute all characters once
 
