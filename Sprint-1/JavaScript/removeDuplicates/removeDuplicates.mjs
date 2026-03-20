@@ -5,23 +5,13 @@
  * - Nested loop: for each element in inputSequence, it scanned uniqueItems so far.
  *   That creates quadratic behavior in the worst case.
  * 
- * Time Complexity: O(n²)
+ * Time Complexity: O(n)
  * Space Complexity:O(n)
- * Optimal Time Complexity:
+ * Optimal Time Complexity: O(n)
  *
  * @param {Array} inputSequence - Sequence to remove duplicates from
  * @returns {Array} New sequence with duplicates removed
  */
 export function removeDuplicates(inputSequence) {
-  const seen = new Set();
-  const uniqueItems = [];
-
-  for (const item of inputSequence) {
-    if (!seen.has(item)) {
-      seen.add(item);
-      uniqueItems.push(item);
-    }
-  }
-
-  return uniqueItems;
+  return [...new Set(inputSequence)]
 }
