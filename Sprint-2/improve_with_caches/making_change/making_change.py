@@ -15,6 +15,10 @@ def ways_to_make_change_helper(total: int, coins: List[int], memo: Dict[Tuple[in
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     Uses memoization to cache results for (total, coin_index).
+    
+    The memoization key uses len(coins) to represent the current position.
+    len(coins) encodes the current position, since coins is always a suffix
+    of the original list.
     """
     if total == 0:
         return 1  
