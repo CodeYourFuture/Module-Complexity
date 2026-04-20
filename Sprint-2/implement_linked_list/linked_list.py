@@ -38,19 +38,18 @@ class LinkedList:
     
     def pop_tail(self):
         if self.head is None:
-            return
-        if self.tail is None:
             return None
         
         node = self.tail
-        if node.previous is None:
-            self.head = None
-            self.tail = None
-        else:
-            self.tail = node.previous
-            self.tail.next = None
-        node.previous = None
-        node.next = None
+        self.remove(node)
+        # if node.previous is None:
+        #     self.head = None
+        #     self.tail = None
+        # else:
+        #     self.tail = node.previous
+        #     self.tail.next = None
+        # node.previous = None
+        # node.next = None
         return node.data
 
 
