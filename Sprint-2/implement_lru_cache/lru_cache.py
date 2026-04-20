@@ -5,34 +5,10 @@ class Node:
         self.next = None
         self.previous = None
 
-class LruCache:
-    def __init__(self, limit: int):
-        if limit <= 0:
-            raise ValueError("limit must be > 0")
-
+class List:
+    def __init__(self):
         self.head = None
         self.tail = None
-        self.limit = limit
-        self.dict = {}
-
-    def set(self, key, value):
-        node = Node(key, value)
-
-        self.dict[key] = node
-        self.add_to_head(node)
-
-        if len(self.dict) > self.limit:
-            self.evict_tail()
-
-
-    def get(self, key):
-        node = self.dict.get(key)
-
-        if node is None:
-            return None
-        else:
-            self.move_to_head(node)
-            return node.value
 
     def add_to_head(self, node):
         node.previous = None
@@ -64,10 +40,44 @@ class LruCache:
         self.remove(node)
         self.add_to_head(node)
 
-    def evict_tail(self):
-        if self.tail is None:
-            return
-
-        old_tail = self.tail
+    def pop_tail(self):
+        if not self.tail:
+            return None
+        old_tail=self.tail
         self.remove(old_tail)
-        del self.dict[old_tail.key]
+        return old_tail
+
+class LruCache:
+    def __init__(self, limit: int):
+        if limit <= 0:
+            raise ValueError("limit must be > 0")
+
+        self.limit = limit
+        self.cache = {}
+        self.list = List()
+
+    def set(self, key, value):
+        node = self.cache.get(key)
+
+        if node:
+            node.value=value
+            self.list.move_to_head(node)
+            return
+        
+        node = Node(key, value)
+        self.cache[key] = node
+        self.list.add_to_head(node)
+
+        if len(self.cache) >= self.limit:
+            tail=self.list.pop_tail()
+            if tail:
+                del self.cache[tail.key]
+
+    def get(self, key):
+        node = self.cache.get(key)
+
+        if node is None:
+            return None
+        else:
+            self.list.move_to_head(node)
+            return node.value
