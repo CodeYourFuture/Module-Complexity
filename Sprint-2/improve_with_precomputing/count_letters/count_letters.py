@@ -18,6 +18,9 @@ def count_letters(string: str) -> int:
         count += 1
     return count
 
+# The Space complexity for new and old script is O(n), but Time complexity the old one is O(n)^2 which is insufficient compare
+# to new code Time complexity O(n).
 
-def is_upper_case(letter: str) -> bool:
+
+def is_upper_case(letter: str) -> bool:    
     return letter == letter.upper()
