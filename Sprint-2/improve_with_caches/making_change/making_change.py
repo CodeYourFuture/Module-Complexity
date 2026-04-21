@@ -1,6 +1,7 @@
 from typing import List
 
 cache = {}
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
 
 def ways_to_make_change(total: int) -> int:
     """
@@ -8,39 +9,30 @@ def ways_to_make_change(total: int) -> int:
 
     For instance, there are two ways to make a value of 3: with 3x 1 coins, or with 1x 1 coin and 1x 2 coin.
     """
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
+    return ways_to_make_change_helper(total, 0)
     
 
 
-def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
-    key = (total, tuple(coins))
+def ways_to_make_change_helper(total: int, index: int) -> int:
+    key = (total, index)
     if key in cache:
         return cache[key]
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     """
-    if total == 0 or len(coins) == 0:
-        result = 0
-        cache[key] = result
-        return result
+    if total == 0:
+        cache[key] = 1
+        return 1
+    
+    if index == len(coins):
+        cache[key] = 0
+        return 0
 
-    if total == 1 or len(coins) == 1:
-        result = 1
-        cache[key] = result
-        return result
-
+    coin=coins[index]
     ways = 0
-    for coin_index in range(len(coins)):
-        coin = coins[coin_index]
-        count_of_coin = 1
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
-            if total_from_coins == total:
-                ways += 1
-            else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
-                ways += intermediate
-            count_of_coin += 1
-
+    count = 0
+    while coin * count <= total:
+        ways += ways_to_make_change_helper(total - coin * count, index + 1)
+        count +=1
     cache[key] = ways
     return ways
