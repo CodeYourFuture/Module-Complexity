@@ -42,14 +42,6 @@ class LinkedList:
         
         node = self.tail
         self.remove(node)
-        # if node.previous is None:
-        #     self.head = None
-        #     self.tail = None
-        # else:
-        #     self.tail = node.previous
-        #     self.tail.next = None
-        # node.previous = None
-        # node.next = None
         return node.data
 
 
