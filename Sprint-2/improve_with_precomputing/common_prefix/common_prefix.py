@@ -26,3 +26,8 @@ def find_common_prefix(left: str, right: str) -> str:
         if left[i] != right[i]:
             return left[:i]
     return left[:min_length]
+
+# Complexity for old version code where we hade a nested loop and slicer, and compared every string with other string is
+# leading to O(n^2*m+n^2), while on the new script we have complexity sorting O(n log n *m) and comparison O(n*m). Even after using sorting
+# which is consuming and costly, the overall complexity is lower because we compare fewer pairs.
+# O(n^2*m) and O(n log n *m)
