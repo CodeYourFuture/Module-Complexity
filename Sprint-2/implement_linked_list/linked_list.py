@@ -52,6 +52,6 @@ class LinkedList:
             self.tail = node.previous
         else:
             node.next.previous = node.previous  # connect next to previous
-    # unplugging node
-    node.next = None
-    node.previous = None
+        # unplugging node
+        node.next = None
+        node.previous = None
