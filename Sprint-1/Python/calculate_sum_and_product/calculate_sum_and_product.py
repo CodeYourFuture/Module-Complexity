@@ -13,8 +13,8 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
         "product": 30 // 2 * 3 * 5
     }
     Time Complexity:
-     There were two loops, one for each operation. Each has complexity O(n)
-     for both loops, complexity is O(2n)
+      There were two separated loops, one for each operation. Each had complexity O(n)
+      The refactor combined them into a single loop reducing the constant factor, maintaining the same Big-O complexity.
     Space Complexity:
         space is constant O(1)
     Optimal time complexity:
