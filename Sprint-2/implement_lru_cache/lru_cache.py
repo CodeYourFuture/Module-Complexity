@@ -1,6 +1,4 @@
-class Node:
-    __slots__ = ("key", "value", "prev", "next")
-
+class DLLNode:
     def __init__(self, key, value):
         self.key = key
         self.value = value
@@ -8,77 +6,59 @@ class Node:
         self.next = None
 
 
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = DLLNode(None, None)
+        self.tail = DLLNode(None, None)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def add_to_front(self, node):
+        node.next = self.head.next
+        node.prev = self.head
+        self.head.next.prev = node
+        self.head.next = node
+
+    def remove(self, node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def move_to_front(self, node):
+        self.remove(node)
+        self.add_to_front(node)
+
+    def remove_last(self):
+        if self.tail.prev is self.head:
+            return None
+        last = self.tail.prev
+        self.remove(last)
+        return last
+
+
 class LruCache:
-    def __init__(self, limit: int):
-        if limit < 1:
-            raise ValueError(f"limit must be at least 1, got {limit}")
-
-        self._limit = limit
-        self.map: dict = {}
-        self.head = None
-        self.tail = None
-
-    def _remove_node(self, node: Node):
-        """Remove a node from the linked list in O(1) time."""
-        if node.prev:
-            node.prev.next = node.next
-        else:
-            self.head = node.next
-
-        if node.next:
-            node.next.prev = node.prev
-        else:
-            self.tail = node.prev
-        
-        node.prev = None
-        node.next = None
-
-    def _add_node_to_head(self, node: Node):
-        """Add a node to the head of the linked list in O(1) time."""
-        node.next = self.head
-        node.prev = None
-
-        if self.head:
-            self.head.prev = node
-        else:
-            self.tail = node
-        
-        self.head = node
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = {}
+        self.list = DoublyLinkedList()
 
     def get(self, key):
-        """Return the value for key, Non if not present"""
-        node = self.map.get(key)
-        if node is None:
-            return None
-        
-        self._touch(node)
+        if key not in self.cache:
+            return -1
+        node = self.cache[key]
+        self.list.move_to_front(node)
         return node.value
 
-    def set(self, key, value) -> None:
-        """Combine value with key, evicting the LRU entry if necessary."""
-        node = self.map.get(key)
-
-        if node:
+    def put(self, key, value):
+        if key in self.cache:
+            node = self.cache[key]
             node.value = value
-            self._touch(node)
-        else:
-            if len(self.map) >= self._limit:
-                self._evict()
-            
-            new_node = Node(key, value)
-            self._add_node_to_head(new_node)
-            self.map[key] = new_node
-
-    def _touch(self, node) -> None:
-        """Move an existing node to the head (most-recently-used position)."""
-        self._remove_node(node)
-        self._add_node_to_head(node)
-
-    def _evict(self) -> None:
-        """Remove the least-recently-used entry (tail of the list)."""
-        if self.tail is None:
+            self.list.move_to_front(node)
             return
-        
-        lru = self.tail
-        self._remove_node(lru)
-        del self.map[lru.key]
+
+        new_node = DLLNode(key, value)
+        self.cache[key] = new_node
+        self.list.add_to_front(new_node)
+
+        if len(self.cache) > self.capacity:
+            last = self.list.remove_last()
+            del self.cache[last.key]
