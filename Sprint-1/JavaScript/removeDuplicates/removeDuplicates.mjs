@@ -11,6 +11,7 @@
             ANSWER:O(n)
             Each item is processed once using a Set for lookup.
  *
+     Original Time Complexity: O(n^2)
  * @param {Array} inputSequence - Sequence to remove duplicates from
  * @returns {Array} New sequence with duplicates removed
  */

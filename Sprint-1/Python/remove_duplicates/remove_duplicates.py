@@ -19,7 +19,9 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     Optimal time complexity:
         ANSWER: O(n)
         Each value is processed once using a set for faster lookup
-        
+
+       
+     Original Time Complexity: O(n^2)
     """
     unique_items = []
     seen = set()

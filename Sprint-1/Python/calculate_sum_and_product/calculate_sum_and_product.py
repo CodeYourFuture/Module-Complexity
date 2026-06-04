@@ -24,6 +24,7 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
         ANSWER: O(n)
         Each number is processed once.
 
+    Original Time Complexity: O(n * m)
     """
     # Edge case: empty list
     if not input_numbers:

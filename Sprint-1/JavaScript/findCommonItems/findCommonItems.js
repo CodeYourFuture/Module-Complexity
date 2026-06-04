@@ -13,6 +13,8 @@
           ANSWER: O(n + m)
           Because we must check all elements in both arrays (or sets) at least once.
  *
+  Original: O(n * m)
+
  * @param {Array} firstArray - First array to compare
  * @param {Array} secondArray - Second array to compare
  * @returns {Array} Array containing unique common items

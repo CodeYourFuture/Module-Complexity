@@ -13,6 +13,9 @@
         ANSWER: O(n)
         Each number is processed once using a Set for lookup.
  *
+
+    Original Time Complexity: O(n^2)
+    
  * @param {Array<number>} numbers - Array of numbers to search through
  * @param {number} target - Target sum to find
  * @returns {boolean} True if pair exists, false otherwise

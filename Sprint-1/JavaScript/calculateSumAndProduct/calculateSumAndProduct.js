@@ -20,6 +20,8 @@
             ANSWER: This is optimal because every number in the array must be processed at least once to calculate the sum and product, so it cannot be done faster than O(n).
             O(n) .
 
+
+   Original Time Complexity: O(2n)
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product

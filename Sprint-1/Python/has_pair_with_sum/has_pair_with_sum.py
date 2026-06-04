@@ -19,6 +19,7 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
         ANSWER: O(n)
         Each number is processed once using a set for faster lookup.
 
+    Original Time Complexity: O(2n)
 
     """
     seen = set()
