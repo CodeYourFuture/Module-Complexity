@@ -2,7 +2,7 @@
  * Find if there is a pair of numbers that sum to a given target value.
  *
  * Time Complexity: O(N^2), the loop is inside a loop
- * Space Complexity: O(1), the array remains the same
+ * Space Complexity: O(1) + O(N) = O(N). O(i) is for i and j index counters. O(N) is for the growing targetSet. 
  * Optimal Time Complexity: O(N), it loops once after optimization
  *
  * @param {Array<number>} numbers - Array of numbers to search through
