@@ -12,9 +12,9 @@ def calculate_sum_and_product(input_numbers: List[int]) -> Dict[str, int]:
         "sum": 10, // 2 + 3 + 5
         "product": 30 // 2 * 3 * 5
     }
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Time Complexity: O(N), the function loops the array for twice (2N)
+    Space Complexity: O(1), the space for variables remains constant
+    Optimal time complexity: O(N), (N) is regarded as the same as (2N)
     """
     # Edge case: empty list
     if not input_numbers:
