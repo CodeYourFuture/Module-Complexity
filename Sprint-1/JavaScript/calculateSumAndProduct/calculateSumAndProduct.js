@@ -9,9 +9,9 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity: O(N)
- * Space Complexity: O(1)
- * Optimal Time Complexity: O(N)
+ * Time Complexity: O(N), as the function iterates the array twice (2N)
+ * Space Complexity: O(1), the space for variables remains constant
+ * Optimal Time Complexity: O(N), the function can't be refactored to reduce complexity, (N) is regarded as the same as (2N)
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
