@@ -23,12 +23,5 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     #         unique_items.append(value)
 
     # return unique_items
-
-    seen = set()
-    unique_items = []
-    for value in values:
-        if value not in seen:
-            seen.add(value)
-            unique_items.append(value)
     
-    return unique_items
+    return list(dict.fromkeys(values))
