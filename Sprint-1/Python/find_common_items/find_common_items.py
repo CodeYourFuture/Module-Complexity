@@ -20,8 +20,9 @@ def find_common_items(
     #             common_items.append(i)
     # return common_items
 
-    firstSet = {*first_sequence}
+    first_set = set(first_sequence)
 
-    commonInSecond = filter(lambda item: item in firstSet, second_sequence)
+    common_in_second = filter(lambda item: item in first_set, second_sequence)
 
-    return list({*commonInSecond})
+    return list(set(common_in_second))
+
