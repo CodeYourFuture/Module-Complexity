@@ -17,12 +17,12 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     #             return True
     # return False
 
-    targetSet = set()
+    pair_num_set = set()
 
     for num in numbers:
-        targetNum = target_sum - num
-        if targetNum in targetSet:
+        pair_num = target_sum - num
+        if pair_num in pair_num_set:
             return True
         else:
-            targetSet.add(num)
+            pair_num_set.add(num)
     return False
