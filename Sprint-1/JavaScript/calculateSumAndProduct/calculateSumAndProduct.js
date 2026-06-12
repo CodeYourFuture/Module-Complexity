@@ -10,7 +10,7 @@
  * }
  *
  * Time Complexity: before fix O(2N), after double loop removed - O(N)
- * Space Complexity: 0(1) - no changes
+ * Space Complexity: 0(N) - depends on numbers.length
  * Optimal Time Complexity: O(N)
  *
  * @param {Array<number>} numbers - Numbers to process

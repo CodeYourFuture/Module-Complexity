@@ -9,13 +9,10 @@ def find_common_items(
     """
     Find common items between two arrays.
 
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Time Complexity: worst O(N1 * N2)
+    Space Complexity: worst O(N1 + N2)
+    Optimal time complexity: worst become: O(N1 + N2)
     """
-    common_items: List[ItemType] = []
-    for i in first_sequence:
-        for j in second_sequence:
-            if i == j and i not in common_items:
-                common_items.append(i)
-    return common_items
+    firstSet = set(first_sequence)
+    secondSet = set(first_sequence)
+    return list(firstSet.intersection(secondSet))
