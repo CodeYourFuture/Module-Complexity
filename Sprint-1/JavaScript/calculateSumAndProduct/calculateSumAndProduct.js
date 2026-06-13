@@ -18,17 +18,18 @@
  */
 export function calculateSumAndProduct(numbers) {
   let sum = 0;
-  for (const num of numbers) {
-    sum += num;
-  }
-
   let product = 1;
-  for (const num of numbers) {
-    product *= num;
+  for (let i = 0; i < numbers.length; i++) {
+    const item = numbers[i];
+    sum += item;
+    product *= item;
   }
 
-  return {
-    sum: sum,
-    product: product,
-  };
+  return { sum, product };
 }
+// before we had two for loops , imagine numbers is a array of 1,000,000 numbers, then with two for loops it would run 2 milions time 
+// now we have one for loop and it will do it one milion times which is half of that
+
+// cleaner and simpler return which does exactly same as before return
+
+// the traditional for loop is faster and simpler for computers
