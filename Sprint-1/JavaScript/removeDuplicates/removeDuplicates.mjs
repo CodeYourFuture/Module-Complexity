@@ -9,28 +9,9 @@
  * @returns {Array} New sequence with duplicates removed
  */
 export function removeDuplicates(inputSequence) {
-  const uniqueItems = [];
-
-  for (
-    let currentIndex = 0;
-    currentIndex < inputSequence.length;
-    currentIndex++
-  ) {
-    let isDuplicate = false;
-    for (
-      let compareIndex = 0;
-      compareIndex < uniqueItems.length;
-      compareIndex++
-    ) {
-      if (inputSequence[currentIndex] === uniqueItems[compareIndex]) {
-        isDuplicate = true;
-        break;
-      }
-    }
-    if (!isDuplicate) {
-      uniqueItems.push(inputSequence[currentIndex]);
-    }
-  }
-
-  return uniqueItems;
+  // put items in a Set to remove duplicates, then make it back into an array
+  return [...new Set(inputSequence)];
 }
+
+// the old code uses a loop inside a loop. Because it multiplies the work, it gets slower and slower the bigger your list grows
+
