@@ -30,3 +30,9 @@ def has_pair_with_sum(numbers: List[Number], target_sum: Number) -> bool:
     It saves everything it sees into a Set so it can check for that partner 
  completely avoiding slow nested loops.
     """
+
+"""
+Time Complexity (Original): O(N^2) — The original code used a loop inside a loop (i and j). Because it had to manually check every possible combination of numbers, it became incredibly slow when dealing with large lists.
+Space Complexity (Improved): O(N) — The improved version uses extra memory to store the numbers inside the seen_numbers set as it loops through them.
+Optimal Time Complexity (Improved): O(N) — By using a set, checking if needed_partner in seen_numbers is instant. The code now only needs to look at each number in the list exactly one time, making it lightning-fast.
+"""

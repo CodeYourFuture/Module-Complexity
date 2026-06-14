@@ -33,3 +33,7 @@ export function calculateSumAndProduct(numbers) {
 // cleaner and simpler return which does exactly same as before return
 
 // the traditional for loop is faster and simpler for computers
+
+/** Time Complexity (Original): O(N) — The original code uses two separate, back-to-back loops. It loops through the list once for the sum, and then loops through the list a second time for the product.
+ * Space Complexity (Improved): O(1) — The improved version uses constant memory. It only stores a few simple number variables (sum, product, and i), which takes up almost no space regardless of how big the list grows.
+ * Optimal Time Complexity (Improved): O(N) — The improved version is still linear time, but it is slightly better because it combines everything into a single loop. It does all the math in just one pass through the list. */

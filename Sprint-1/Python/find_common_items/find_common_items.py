@@ -33,3 +33,9 @@ def find_common_items(
      then, it checks each item to find 
     the common elements without using slow nested loops.
     """
+
+"""
+Time Complexity (Original): O(N \times M) — The original code used a loop inside a loop (for i and for j). To make it even slower, it also used i not in common_items, which forced the computer to scan a third list. This takes a massive number of steps for large datasets.
+Space Complexity (Improved): O(N + M) — The improved version uses extra memory to store the unique items from both sequences inside sets (set_first, set_two, and result_set).
+Optimal Time Complexity (Improved): O(N + M) — By turning the sequences into sets, looking up an item with if item in set_two becomes instant. This allows the function to find all common items in a single, fast pass.
+"""

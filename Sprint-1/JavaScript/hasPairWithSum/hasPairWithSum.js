@@ -32,3 +32,9 @@ export function hasPairWithSum(numbers, target) {
 }
 
 
+/**
+ * Time Complexity (Original): O(N^2) — The original code used a loop inside a loop (i and j). Because it had to compare every single number with every other number, it was very slow and took a massive number of steps for large datasets.
+ * Space Complexity (Improved): O(N) — The improved version uses extra memory for the seenNumbers set so it can remember the numbers it looks at.
+ * Optimal Time Complexity (Improved): O(N) — By using the set, the code now only loops through the list exactly one time, making the lookup instant and dropping the time significantly.
+ */
+

@@ -29,3 +29,9 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     If it's a brand new item, it saves it to the Set and adds it to 
     the result List, keeps everything in original order.
     """
+
+"""
+Time Complexity (Original): O(N^2) — The original code used a loop inside a loop (for value and for existing). For every single item in the original list, it had to scan through the unique_items list one-by-one to check for copies, which makes it very slow for big data.
+Space Complexity (Improved): O(N) — The improved version uses extra memory to store items inside both a seen set and a unique_items list.
+Optimal Time Complexity (Improved): O(N) — By using a set, checking if value not in seen is instant. The computer now flattens out all duplicates in just one single pass while perfectly keeping the original order of the items.
+"""
