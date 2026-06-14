@@ -16,13 +16,7 @@ def find_common_items(
     if not first_sequence or not second_sequence:
         return []
 
-    set_two = set(second_sequence)
-    set_first = set(first_sequence)
-    result_set = set()
-
-    for item in set_first:
-        if item in set_two:
-            result_set.add(item)
+    result_set = set(first_sequence) & set(second_sequence)
 
     return list(result_set)
 

@@ -11,16 +11,8 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     Space complexity:
     Optimal time complexity:
     """
-    seen = set()
-    unique_items = []
 
-    for value in values:
-       
-        if value not in seen:
-            seen.add(value)      
-            unique_items.append(value)
-
-    return unique_items
+    return list(dict.fromkeys(values))
 
 #old code hs a nested loop: for every single value in the original list, you loop through its unique_items list to see if it is already there. For a massive list of 100,000 items, this turns into billions of checks, making the program very slow
 """
