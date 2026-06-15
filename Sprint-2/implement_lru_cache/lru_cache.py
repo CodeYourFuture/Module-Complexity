@@ -13,10 +13,9 @@ class LruCache:
         if key not in self.cache:
             return None
 
-        value = self.cache.pop(key)
-        self.cache[key] = value
+        self.cache.move_to_end(key)
 
-        return value
+        return self.cache[key]
 
     def set(self, key, value):
         if key in self.cache:
@@ -27,20 +26,4 @@ class LruCache:
 
         self.cache[key] = value
 
-
-#  test
-
-cache = LruCache(3)
-
-cache.set("Aida", 1)
-cache.set("Bob", 2)
-cache.set("Clare", 3)
-
-print(cache.get("Aida")) 
-
-cache.set("David", 4)
-
-print(cache.get("Bob")) 
-print(cache.get("Clare")) 
-print(cache.get("David"))  
 
