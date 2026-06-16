@@ -1,6 +1,6 @@
 import unittest
 
-from linked_list import LinkedList
+from linked_list import LinkedList, Node
 
 class LinkedListTest(unittest.TestCase):
     def test_pushes_then_pops(self):
@@ -33,6 +33,29 @@ class LinkedListTest(unittest.TestCase):
         self.assertEqual(l.tail, b)
         self.assertIsNone(b.next)
         self.assertIsNone(b.previous)
+
+    def test_push_tail(self):
+        l = LinkedList()
+        a = l.push_tail("a")
+        b = l.push_tail("b")
+
+        self.assertEqual(l.tail, b)
+        self.assertEqual(l.head, a)
+        self.assertIsNone(b.next)
+        self.assertIsNone(a.previous)
+
+    def test_remove_non_exist_node(self):
+        l = LinkedList()
+        a = l.push_tail("a")
+        b = l.push_tail("b")
+        c = Node("c")
+
+        l.remove(c)
+
+        self.assertEqual(l.tail, b)
+        self.assertEqual(l.head, a)
+        self.assertIsNone(b.next)
+        self.assertIsNone(a.previous)
 
 
 if __name__ == "__main__":
