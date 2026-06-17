@@ -25,43 +25,35 @@ class LinkedList:
     def pop_tail(self):
 
         if self.tail == None:
-            return
-        elif self.tail == self.head:
-            val = self.tail.value
-            self.tail = None
-            self.head = None
-            return val
-        else:
-            val = self.tail.value
-            new_tail = self.tail.previous
-            new_tail.next = None
-            self.tail.previous = None
-            self.tail = new_tail
-            return val
+            return None
 
-    def remove(self, Node):
+        return self.remove(self.tail)
+
+    def remove(self, node):
         if self.head == None and self.tail == None:
             return
         
-        new_previous = Node.previous
-        new_next = Node.next
+        new_previous = node.previous
+        new_next = node.next
 
-        if self.head == Node and self.tail == Node:
-            Node.value = None
+        val = node.value
+
+        if self.head == node and self.tail == node:
             self.head = None
             self.tail = None
-        elif self.head == Node :
-            Node.previous = None
-            Node.next = None
+        elif self.head == node :
             new_next.previous = None
             self.head = new_next
-        elif self.tail == Node:
-            self.pop_tail()
+        elif self.tail == node:
+            new_previous.next = None
+            self.tail = new_previous
         elif new_next and new_previous:
             new_previous.next = new_next
             new_next.previous = new_previous
-            Node.previous = None
-            Node.next = None
+
+        node.previous = None
+        node.next = None
+        return val
 
     def push_tail(self, value):
         new_node = Node(value)
