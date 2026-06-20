@@ -1,10 +1,14 @@
 class Node:
+    __slots__ = ("value", "next", "previous")
+
     def __init__(self, value):
         self.value = value
         self.next = None
         self.previous = None
 
 class LinkedList:
+    __slots__ = ("head", "tail")
+
     def __init__(self):
         self.head = None
         self.tail = None
@@ -31,7 +35,7 @@ class LinkedList:
 
     def remove(self, node):
         if self.head == None and self.tail == None:
-            return
+            return None
         
         new_previous = node.previous
         new_next = node.next
