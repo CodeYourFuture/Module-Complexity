@@ -1,9 +1,9 @@
-def fibonacci(n, cache=None):
-    if cache == None:
-        cache={0:0, 1:1}
-    if n in cache:
-        return cache[n]
+def fibonacci(n):
+    if n in fibonacci.cache:
+        return fibonacci.cache[n]
     else:
-        value = fibonacci(n - 1, cache) + fibonacci(n - 2, cache)
-        cache[n] = value
+        value = fibonacci(n - 1) + fibonacci(n - 2)
+        fibonacci.cache[n] = value
         return value
+
+fibonacci.cache={0:0, 1:1}
