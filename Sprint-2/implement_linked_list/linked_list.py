@@ -14,6 +14,7 @@ class LinkedList:
         new_node = Node(value)
 
         new_node.next = self.head
+
         if self.head:
             self.head.previous = new_node
         else:
@@ -27,13 +28,7 @@ class LinkedList:
             return None
 
         removed = self.tail
-
-        if self.tail.previous:
-            self.tail = self.tail.previous
-            self.tail.next = None
-        else:
-            self.head = None
-            self.tail = None
+        self.remove(removed)
 
         return removed.value
 
@@ -42,10 +37,12 @@ class LinkedList:
             node.previous.next = node.next
         else:
             self.head = node.next
-            if self.head:
-                self.head.previous = None
 
         if node.next:
             node.next.previous = node.previous
         else:
             self.tail = node.previous
+
+
+        node.previous = None
+        node.next = None
