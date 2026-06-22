@@ -23,6 +23,9 @@ def ways_to_make_change_helper(total: int, coins: List[int], coin_index: int = 0
     
     if total == 0:
         return 1
+    
+    if coin_index == len(coins) - 1:
+        return 1 if total % coins[coin_index] == 0 else 0
 
     if total < 0 or coin_index >= len(coins):
         return 0
