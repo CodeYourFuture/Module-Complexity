@@ -14,7 +14,8 @@ def find_longest_common_prefix(strings: List[str]):
         if len(common) > len(longest):
             longest = common
     return longest
-
+# before changes, it was N^2, bacause it got a for loop inside a for loop
+# after changes, it is N + N. The first N for sorted, and another N for the loop.
 
 def find_common_prefix(left: str, right: str) -> str:
     min_length = min(len(left), len(right))

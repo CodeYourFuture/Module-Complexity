@@ -11,7 +11,8 @@ def count_letters(s: str) -> int:
         if letter.lower() not in lower_set:
             only_upper.add(letter)
     return len(only_upper)
-
+#before: it was N^2. It took a for loop and a not in s, which is a loop.
+#after: it becomes N + N. The first N is the set created, it can access data instantly. The second N is the for loop.
 
 def is_upper_case(letter: str) -> bool:
     return letter == letter.upper()
