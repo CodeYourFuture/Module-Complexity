@@ -1,8 +1,8 @@
 /**
  * Find if there is a pair of numbers that sum to a given target value.
  *
- * Time Complexity: worst O(N!) - factorial
- * Space Complexity: O(numbers.length)
+ * Time Complexity: worst O(N^2) - square
+ * Space Complexity: O(1)
  * Optimal Time Complexity: worth become O(N)
  *
  * @param {Array<number>} numbers - Array of numbers to search through
@@ -11,11 +11,12 @@
  */
 
 export function hasPairWithSum(numbers, target) {
-
+  const numbersSet = new Set(numbers);
+  const complementsSet = new Set();
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers.includes(target - numbers[i])) {
-      return true;
-    }
+    complementsSet.add(target - numbers[i])
   }
+  const intersection = complementsSet.intersection(numbersSet);
+  if (intersection.size > 0) return true;
   return false;
 }

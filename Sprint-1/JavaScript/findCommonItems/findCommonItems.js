@@ -12,6 +12,6 @@
 export const findCommonItems = (firstArray, secondArray) => {
   const firstSet = new Set(firstArray);
   const secondSet = new Set(secondArray);
-  secondArray = [...secondSet].filter((element) => firstSet.has(element))
-  return secondArray;
+  const intersection = secondSet.intersection(firstSet);
+  return [...intersection];
 };

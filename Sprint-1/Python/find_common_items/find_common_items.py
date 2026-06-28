@@ -14,5 +14,5 @@ def find_common_items(
     Optimal time complexity: worst become: O(N1 + N2)
     """
     firstSet = set(first_sequence)
-    secondSet = set(first_sequence)
+    secondSet = set(second_sequence)
     return list(firstSet.intersection(secondSet))

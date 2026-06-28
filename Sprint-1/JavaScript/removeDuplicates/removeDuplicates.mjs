@@ -9,12 +9,10 @@
  * @returns {Array} New sequence with duplicates removed
  */
 export function removeDuplicates(inputSequence) {
-  const uniqueItems = [];
+  const uniqueItems = new Set();
   inputSequence.forEach((element) => {
-    if (!uniqueItems.includes(element)) {
-      uniqueItems.push(element);
-    }
+    uniqueItems.add(element)
   });
 
-  return uniqueItems;
+  return [...uniqueItems];
 }
