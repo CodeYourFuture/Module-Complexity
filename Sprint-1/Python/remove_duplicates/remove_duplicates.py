@@ -12,7 +12,6 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     Optimal time complexity: become O(N)
     """
 
-    unique_items = set()
     result = []
     for value in values:
         if value not in result:

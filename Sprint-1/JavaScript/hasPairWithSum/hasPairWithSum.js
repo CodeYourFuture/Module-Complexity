@@ -11,12 +11,13 @@
  */
 
 export function hasPairWithSum(numbers, target) {
-  const numbersSet = new Set(numbers);
-  const complementsSet = new Set();
+  const checkedNumbers = new Set();
   for (let i = 0; i < numbers.length; i++) {
-    complementsSet.add(target - numbers[i])
+    const complement = target - numbers[i];
+    if ( checkedNumbers.has(complement)) {
+      return true;
+    }
+    checkedNumbers.add(numbers[i])
   }
-  const intersection = complementsSet.intersection(numbersSet);
-  if (intersection.size > 0) return true;
   return false;
 }
