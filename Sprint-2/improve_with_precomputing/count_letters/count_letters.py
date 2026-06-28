@@ -5,6 +5,8 @@ def count_letters(s: str) -> int:
     appeared_upper = set()
     appeared_lower = set()
     for letter in s:
+        if not letter.isalpha():
+            continue
         if letter.islower():
             appeared_lower.add(letter.lower())
         else:

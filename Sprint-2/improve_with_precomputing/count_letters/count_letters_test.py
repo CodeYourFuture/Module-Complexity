@@ -16,6 +16,9 @@ class CommonPrefixTest(unittest.TestCase):
 
     def test_mixed(self):
         self.assertEqual(count_letters("aABCbcDEeFGhI"), 4)
+    
+    def test_non_alphabet(self):
+        self.assertEqual(count_letters("aABCbcDEeFGhI!!!"), 4)
 
     def test_long_string(self):
         s = ""
