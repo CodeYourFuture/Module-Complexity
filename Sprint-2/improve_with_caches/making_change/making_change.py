@@ -13,10 +13,7 @@ def ways_to_make_change(total: int) -> int:
 def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
-    """
-    if total == 0 or len(coins) == 0:
-        return 0
-    
+    """  
     ways = [0] * (total + 1)
     ways[0] = 1
     
