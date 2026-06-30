@@ -75,19 +75,6 @@ class LinkedList:
         value = node.data
 
         self.remove(node)
-        # value = self.tail.data
-
-        # if self.head == self.tail:
-        #     # Only one element in the list
-        #     self.head = None
-        #     self.tail = None
-
-        # else:
-        #     # Move tail pointer backwards
-        #     self.tail = self.tail.previous
-
-        #     # Disconnect old tail node
-        #     self.tail.next = None
 
         return value
 
