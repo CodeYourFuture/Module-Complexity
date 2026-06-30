@@ -8,6 +8,8 @@ class Node:
     - next: pointer to the next node
     """
 
+    _slots_ = ("data", "previous", "next")
+
     def __init__(self, data):
         self.data = data
         self.previous = None
@@ -69,19 +71,23 @@ class LinkedList:
             raise ValueError("List is empty.")
         
         # store value before removing node
-        value = self.tail.data
+        node = self.tail
+        value = node.data
 
-        if self.head == self.tail:
-            # Only one element in the list
-            self.head = None
-            self.tail = None
+        self.remove(node)
+        # value = self.tail.data
 
-        else:
-            # Move tail pointer backwards
-            self.tail = self.tail.previous
+        # if self.head == self.tail:
+        #     # Only one element in the list
+        #     self.head = None
+        #     self.tail = None
 
-            # Disconnect old tail node
-            self.tail.next = None
+        # else:
+        #     # Move tail pointer backwards
+        #     self.tail = self.tail.previous
+
+        #     # Disconnect old tail node
+        #     self.tail.next = None
 
         return value
 
