@@ -1,12 +1,13 @@
 class Node:
     """
-    A node in a double linked list.
+    A node in a doubly linked list.
 
     Each node supports a data, previous, and next
     - data: the value
     - previous: pointer to the previous node
     - next: pointer to the next node
     """
+    _slots_ = ("data", "previous", "next")
 
     def __init__(self, data):
         self.data = data
@@ -69,19 +70,10 @@ class LinkedList:
             raise ValueError("List is empty.")
         
         # store value before removing node
-        value = self.tail.data
+        node = self.tail
+        value = node.data
 
-        if self.head == self.tail:
-            # Only one element in the list
-            self.head = None
-            self.tail = None
-
-        else:
-            # Move tail pointer backwards
-            self.tail = self.tail.previous
-
-            # Disconnect old tail node
-            self.tail.next = None
+        self.remove(node)
 
         return value
 
