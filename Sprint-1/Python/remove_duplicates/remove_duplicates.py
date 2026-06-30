@@ -11,10 +11,11 @@ def remove_duplicates(values: Sequence[ItemType]) -> List[ItemType]:
     Space complexity: O(N)
     Optimal time complexity: become O(N)
     """
-
+    added_values = set()
     result = []
     for value in values:
-        if value not in result:
+        if value not in added_values:
+            added_values.add(value)
             result.append(value)
 
     return result
