@@ -1,12 +1,10 @@
-_cache = {}
-
-def fibonacci(n):
-    if n in _cache:
-        return _cache[n]
+def fibonacci(n, cache={}):
+    if n in cache:
+        return cache[n]
     
     if n <= 1:
         return n
     
     result = fibonacci(n - 1) + fibonacci(n - 2)
-    _cache[n] = result
+    cache[n] = result
     return result
