@@ -9,8 +9,8 @@ def find_common_items(
     """
     Find common items between two arrays.
 
-    Time Complexity: O(n+m)
-    Space Complexity:O(n+m)
+    Time Complexity: O(n^3)
+    Space Complexity:O(u)
     Optimal time complexity: O(n+m)
     """
     

@@ -1,7 +1,7 @@
 /**
  * Remove duplicate values from a sequence, preserving the order of the first occurrence of each value.
  *
- * Time Complexity:O(n)
+ * Time Complexity:O(n^2)
  * Space Complexity:O(n)
  * Optimal Time Complexity:O(n)
  *
