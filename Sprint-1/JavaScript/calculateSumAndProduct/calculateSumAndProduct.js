@@ -27,9 +27,16 @@ export function calculateSumAndProduct(numbers) {
     sum += num;
     product *= num;
   }
-  
+
   return {
     sum: sum,
     product: product,
   };
 }
+/*
+Time Complexity is O(n) because every number in the array must be
+processed once. Space Complexity is O(1) because only two variables
+ (sum and product) are stored regardless of the array size. O(n) is 
+ also the optimal complexity because every element must be examined
+  at least once to calculate the correct sum and product.
+  */
