@@ -53,7 +53,8 @@ class LinkedList:
                 self.head = None
                 
         else:
-            if node_handle.previous and node_handle.next:
+                assert node_handle.previous is not None
+                assert node_handle.next is not None
                 node_handle.previous.next = node_handle.next
                 node_handle.next.previous = node_handle.previous
 
