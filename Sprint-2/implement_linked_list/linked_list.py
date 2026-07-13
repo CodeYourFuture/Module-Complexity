@@ -34,29 +34,29 @@ class LinkedList:
         self.remove(self.tail)
         return value_to_return
 
-    def remove(self, node_handle: Optional[Node]) -> None:
-        if not node_handle:
+    def remove(self, node: Node) -> None:
+        if not node:
             return
 
-        if node_handle == self.head:
-            self.head = node_handle.next
+        if node == self.head:
+            self.head = node.next
             if self.head:
                 self.head.previous = None
             else:
                 self.tail = None
                 
-        elif node_handle == self.tail:
-            self.tail = node_handle.previous
+        elif node == self.tail:
+            self.tail = node.previous
             if self.tail:
                 self.tail.next = None
             else:
                 self.head = None
                 
         else:
-                assert node_handle.previous is not None
-                assert node_handle.next is not None
-                node_handle.previous.next = node_handle.next
-                node_handle.next.previous = node_handle.previous
+            assert node.previous is not None
+            assert node.next is not None
+            node.previous.next = node.next
+            node.next.previous = node.previous
 
-        node_handle.next = None
-        node_handle.previous = None
+        node.next = None
+        node.previous = None
