@@ -1,5 +1,5 @@
-fib_cache = {}
-def fibonacci(n):
+
+def fibonacci(n: int, fib_cache: dict[int, int] = {0: 0, 1: 1}) -> int:
     if n <= 1:
         return n
     #check if already calc this num.
