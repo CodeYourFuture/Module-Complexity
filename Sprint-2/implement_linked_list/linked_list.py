@@ -49,3 +49,20 @@ class LinkedList:
 
         node.next = None
         node.previous = None
+
+    def move_to_head(self, node):
+        if node == self.head:
+            return
+
+        self.remove(node)
+
+        node.previous = None
+        node.next = self.head
+
+        if self.head is not None:
+            self.head.previous = node
+
+        self.head = node
+
+        if self.tail is None:
+            self.tail = node
