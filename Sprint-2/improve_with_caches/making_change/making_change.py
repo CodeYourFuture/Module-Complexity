@@ -1,6 +1,6 @@
 from typing import List
 
-cache = {}
+COINS = [200, 100, 50, 20, 10, 5, 2, 1]
 
 
 def ways_to_make_change(total: int) -> int:
@@ -8,40 +8,37 @@ def ways_to_make_change(total: int) -> int:
     Given access to coins with the values 1, 2, 5, 10, 20, 50, 100, 200,
     returns a count of all of the ways to make the passed total value.
     """
-    cache.clear()
-    return ways_to_make_change_helper(
-        total,
-        [200, 100, 50, 20, 10, 5, 2, 1]
-    )
+    cache = {}
 
+    def helper(total: int, start_index: int) -> int:
+        key = (total, start_index)
 
-def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
-    key = (total, tuple(coins))
+        if key in cache:
+            return cache[key]
 
-    if key in cache:
-        return cache[key]
+        if total == 0 or start_index >= len(COINS):
+            return 0
 
-    if total == 0 or len(coins) == 0:
-        return 0
+        ways = 0
 
-    ways = 0
+        for coin_index in range(start_index, len(COINS)):
+            coin = COINS[coin_index]
+            count_of_coin = 1
 
-    for coin_index in range(len(coins)):
-        coin = coins[coin_index]
-        count_of_coin = 1
+            while coin * count_of_coin <= total:
+                total_from_coins = coin * count_of_coin
 
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
+                if total_from_coins == total:
+                    ways += 1
+                else:
+                    ways += helper(
+                        total - total_from_coins,
+                        coin_index + 1
+                    )
 
-            if total_from_coins == total:
-                ways += 1
-            else:
-                ways += ways_to_make_change_helper(
-                    total - total_from_coins,
-                    coins[coin_index + 1:]
-                )
+                count_of_coin += 1
 
-            count_of_coin += 1
+        cache[key] = ways
+        return ways
 
-    cache[key] = ways
-    return ways
+    return helper(total, 0)
