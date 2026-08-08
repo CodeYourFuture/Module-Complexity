@@ -16,19 +16,36 @@
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
  */
+// export function calculateSumAndProduct(numbers) {
+//   let sum = 0;
+//   for (const num of numbers) {
+//     sum += num;
+//   }
+
+//   let product = 1;
+//   for (const num of numbers) {
+//     product *= num;
+//   }
+
+//   return {
+//     sum: sum,
+//     product: product,
+//   };
+// }
+
+// Refactored:
+
 export function calculateSumAndProduct(numbers) {
-  let sum = 0;
-  for (const num of numbers) {
-    sum += num;
-  }
-
-  let product = 1;
-  for (const num of numbers) {
-    product *= num;
-  }
-
-  return {
-    sum: sum,
-    product: product,
-  };
+  const result = numbers.reduce(
+    (acc, num) => {
+      ((acc.sum += num), (acc.product *= num));
+      return acc;
+    },
+    { sum: 0, product: 1 },
+  );
+  return result;
 }
+
+//  * Time Complexity: O(n)
+//  * Space Complexity: O(1)
+//  * Optimal Time Complexity: O(n)
