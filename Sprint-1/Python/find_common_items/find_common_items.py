@@ -8,14 +8,16 @@ def find_common_items(
 ) -> List[ItemType]:
     """
     Find common items between two arrays.
+    Time Complexity: O(n * m * k) in the worst case, where:
+    - n = length of first_sequence (outer loop)
+    - m = length of second_sequence (inner loop)
+    - k = length of common_items, because "i not in common_items" requires scanning this list
 
-    Time Complexity:
-    Space Complexity:
-    Optimal time complexity:
+    Space Complexity:In first implementation We only store the common items in a new list.--> O(n)
+
+
+    Optimal time complexity:This can be improved to O(n + m) by using a set for faster lookups.
     """
-    common_items: List[ItemType] = []
-    for i in first_sequence:
-        for j in second_sequence:
-            if i == j and i not in common_items:
-                common_items.append(i)
-    return common_items
+    first_set=set(first_sequence) # O(n)
+    commons=[item for item in second_sequence if item in first_set] # O(m)
+    return list(set(commons)) # remove duplicates

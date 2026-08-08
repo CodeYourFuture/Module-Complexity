@@ -9,21 +9,19 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
- *
+ * Time Complexity: There are two separate loops. Total operation O(n)+O(n) ---> O(n)
+ * Space Complexity:We are only using two variables sum and product --->O(1)
+ * Optimal Time Complexity:To calculate sum and product, every element must be visited at least once, so the optimal time complexity is O(n)
+ * Refactor Note: We can combine both calculations into a single loop for cleaner and more readable code
+ * 
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
  */
 export function calculateSumAndProduct(numbers) {
   let sum = 0;
-  for (const num of numbers) {
-    sum += num;
-  }
-
   let product = 1;
   for (const num of numbers) {
+    sum += num;
     product *= num;
   }
 
