@@ -9,21 +9,20 @@
  *   "product": 30 // 2 * 3 * 5
  * }
  *
- * Time Complexity:
- * Space Complexity:
- * Optimal Time Complexity:
+ * Time Complexity:O(n)
+ * Space Complexity: O(1)
+ * Optimal Time Complexity:O(n)
  *
  * @param {Array<number>} numbers - Numbers to process
  * @returns {Object} Object containing running total and product
  */
+
+// The refactor code ....
 export function calculateSumAndProduct(numbers) {
   let sum = 0;
+  let product =1;
   for (const num of numbers) {
     sum += num;
-  }
-
-  let product = 1;
-  for (const num of numbers) {
     product *= num;
   }
 
@@ -32,3 +31,5 @@ export function calculateSumAndProduct(numbers) {
     product: product,
   };
 }
+
+// The refactor code is better because it combine two separate loop into one and calculate the sum & Product.
