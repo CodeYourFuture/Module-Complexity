@@ -1,32 +1,53 @@
+
 from typing import List
+
+# Define coin values globally
+COIN_VALUES = [200, 100, 50, 20, 10, 5, 2, 1]
 
 
 def ways_to_make_change(total: int) -> int:
     """
-    Given access to coins with the values 1, 2, 5, 10, 20, 50, 100, 200, returns a count of all of the ways to make the passed total value.
-
-    For instance, there are two ways to make a value of 3: with 3x 1 coins, or with 1x 1 coin and 1x 2 coin.
+    Given coin values of 1, 2, 5, 10, 20, 50, 100, and 200,
+    return the number of ways to make the given total.
     """
-    return ways_to_make_change_helper(total, [200, 100, 50, 20, 10, 5, 2, 1])
+    memo = {}
+    return change_helper(total, 0, memo)
 
 
-def ways_to_make_change_helper(total: int, coins: List[int]) -> int:
-    """
-    Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
-    """
-    if total == 0 or len(coins) == 0:
+def change_helper(amount: int, index: int, memo: dict) -> int:
+    """Helper function to calculate the number of ways."""
+
+    key = (amount, index)
+
+    if key in memo:
+        return memo[key]
+
+    if amount == 0:
+        return 1
+
+    if index >= len(COIN_VALUES):
         return 0
 
-    ways = 0
-    for coin_index in range(len(coins)):
-        coin = coins[coin_index]
-        count_of_coin = 1
-        while coin * count_of_coin <= total:
-            total_from_coins = coin * count_of_coin
-            if total_from_coins == total:
-                ways += 1
+    result = 0
+
+    for position in range(index, len(COIN_VALUES)):
+        value = COIN_VALUES[position]
+        quantity = 1
+
+        while value * quantity <= amount:
+            current_sum = value * quantity
+
+            if current_sum == amount:
+                result += 1
             else:
-                intermediate = ways_to_make_change_helper(total - total_from_coins, coins=coins[coin_index+1:])
-                ways += intermediate
-            count_of_coin += 1
-    return ways
+                remaining = change_helper(
+                    amount - current_sum,
+                    position + 1,
+                    memo
+                )
+                result += remaining
+
+            quantity += 1
+
+    memo[key] = result
+    return result
