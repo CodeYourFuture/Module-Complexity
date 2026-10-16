@@ -14,28 +14,33 @@ def ways_to_make_change_helper(total: int, coins: List[int], coin_index: int) ->
     """
     Helper function for ways_to_make_change to avoid exposing the coins parameter to callers.
     """
-   
-   #If total is 0, we found exactly 1 valid way to make change
+    
+    # If total is 0, we found 1 valid way
     if total == 0:
         return 1
         
-    #If total becomes negative or we run out of coins, this way failed
+    # If total becomes negative or we ran out of coins, 0 ways
     if total < 0 or coin_index >= len(coins):
         return 0
+
+    # shortcut if only one coin is left
+    if coin_index == len(coins) - 1:
+        return 1 if total % coins[coin_index] == 0 else 0
 
     # Cache check
     cache_key = (total, coin_index)
     if cache_key in change_cache:
         return change_cache[cache_key]
 
+    ways = 0
     current_coin = coins[coin_index]
+    
+    # One level of loop to try taking 0, 1, 2... of the current coin
+    current_total = 0
+    while current_total <= total:
+        ways += ways_to_make_change_helper(total - current_total, coins, coin_index + 1)
+        current_total += current_coin
 
-    # 1 use the current coin and stay on the same coin index
-    # 2 skip the current coin and move to the next coin index
-    ways = (
-        ways_to_make_change_helper(total - current_coin, coins, coin_index) +
-        ways_to_make_change_helper(total, coins, coin_index + 1)
-    )
-       # store the result in the cache before the return      
+    # Store the result in the cache before returning      
     change_cache[cache_key] = ways
     return ways
