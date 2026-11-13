@@ -1,7 +1,5 @@
 def count_letters(s: str) -> int:
-    """
-    count_letters returns the number of letters which only occur in upper case in the passed string.
-    """
+    """count_letters returns the number of distinct upper case letters that do not appear in lowercase in s"""
     seen = set(s)
     return sum(
         1 for letter in seen
